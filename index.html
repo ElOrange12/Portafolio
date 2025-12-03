@@ -1,178 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio Personal</title>
-    <style>
-        /* --- ESTILOS GENERALES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Mi Portafolio Personal</title>
+		
+		<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: BlanchedAlmond;
-            color: #333;
-            line-height: 1.6;
-        }
+		<style>
+		    /* --- ESTILOS GENERALES --- */
+		    * {
+		        margin: 0;
+		        padding: 0;
+		        box-sizing: border-box;
+		    }
 
-        /* --- CABECERA (BANNER HERO) --- */
-        header {
-            /* Imagen de fondo del banner */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 40vh; /* Ocupa el 60% de la altura de la pantalla */
-            display: flex; /* Flexbox para centrar el texto */
-            flex-direction: column;
-            justify-content: center; /* Centrado vertical */
-            align-items: center; /* Centrado horizontal */
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
+		    body {
+		        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		        background-color: BlanchedAlmond;
+		        color: #333;
+		        line-height: 1.6;
+		    }
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
+		    /* --- CABECERA (BANNER HERO) --- */
+		    header {
+		        /* Imagen de fondo */
+		        background-image: linear-gradient(black), url('');
+		        background-size: cover;
+		        background-position: center;
+		        /* Cambié height a min-height para que crezca si los iconos ocupan mucho espacio */
+		        min-height: 50vh; 
+		        display: flex;
+		        flex-direction: column;
+		        justify-content: center;
+		        align-items: center;
+		        text-align: center;
+		        color: darkorange;
+		        padding: 40px 20px;
+		    }
 
-        header p {
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
+		    header h1 {
+		        font-size: 3rem;
+		        margin-bottom: 10px;
+		        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+		    }
 
-        /* --- CONTENEDOR PRINCIPAL --- */
-        main {
-            max-width: 1200px;
-            margin: 50px auto; /* Centrar el contenedor en la página */
-            padding: 0 20px;
-        }
+		    header p {
+		        font-size: 1.2rem;
+		        font-weight: 300;
+		        margin-bottom: 25px; /* Espacio entre el texto y los iconos */
+		    }
 
-        h2.section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: black;
-        }
+		    /* --- NUEVOS ESTILOS PARA LOS ICONOS --- */
+		    .tech-icons {
+		        display: flex;
+		        gap: 20px; /* Separación entre iconos */
+		        flex-wrap: wrap; /* Para que bajen si no caben en móviles */
+		        justify-content: center;
+		    }
 
-        /* --- GRID DE ARTÍCULOS (FLEXBOX) --- */
-        .portfolio-grid {
-            display: flex;
-            flex-wrap: wrap; /* Permite que los elementos bajen si no caben */
-            gap: 30px; /* Espacio entre tarjetas */
-            justify-content: center; /* Centra las tarjetas si sobran espacios */
-        }
+		    .tech-icons i {
+		        font-size: 2.5rem; /* Tamaño grande de los iconos */
+		        color: rgba(255, 140, 0, 0.8); /* Naranja con un poco de transparencia */
+		        transition: all 0.3s ease;
+		        cursor: default;
+		    }
 
-        /* --- TARJETA DEL ARTÍCULO --- */
-        .article-card {
-            background: darkorange;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            overflow: hidden; /* Para que la imagen respete el borde redondeado */
-            width: 300px; /* Ancho base */
-            flex: 1 1 300px; /* Crece, se encoge, pero base de 300px */
-            max-width: 350px; /* Para que no se estiren demasiado */
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+		    /* Efecto al pasar el mouse por encima de un icono */
+		    .tech-icons i:hover {
+		        transform: scale(1.2); /* Se hace más grande */
+		        color: #fff; /* Se vuelve blanco puro */
+		        text-shadow: 0 0 10px rgba(255,255,255,0.5); /* Brillo */
+		    }
 
-        .article-card:hover {
-            transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
-        }
+		    /* --- CONTENEDOR PRINCIPAL --- */
+		    main {
+		        max-width: 1200px;
+		        margin: 50px auto;
+		        padding: 0 20px;
+		    }
 
-        .article-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover; /* Recorta la imagen para que encaje bien */
-        }
+		    h2.section-title {
+		        text-align: center;
+		        margin-bottom: 40px;
+		        font-size: 2rem;
+		        color: black;
+		    }
 
-        .card-content {
-            padding: 20px;
-            flex-grow: 1; /* Empuja el botón hacia abajo si hay poco texto */
-            display: flex;
-            flex-direction: column;
-        }
+		    /* --- GRID DE ARTÍCULOS --- */
+		    .portfolio-grid {
+		        display: flex;
+		        flex-wrap: wrap;
+		        gap: 30px;
+		        justify-content: center;
+		    }
 
-        .card-content h3 {
-            margin-bottom: 10px;
-            color: black;
-        }
+		    /* --- TARJETA DEL ARTÍCULO --- */
+		    .article-card {
+		        background: darkorange;
+		        border-radius: 10px;
+		        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+		        overflow: hidden;
+		        width: 300px;
+		        flex: 1 1 300px;
+		        max-width: 350px;
+		        transition: transform 0.3s ease;
+		        display: flex;
+		        flex-direction: column;
+		    }
 
-        .card-content p {
-            font-size: 0.95rem;
-            color: black;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
+		    .article-card:hover {
+		        transform: translateY(-5px);
+		    }
 
-        .btn-leer {
-            display: inline-block;
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            align-self: flex-start; /* Alinea el botón a la izquierda */
-        }
+		    .article-card img {
+		        width: 100%;
+		        height: 200px;
+		        object-fit: cover;
+		    }
 
-        .btn-leer:hover {
-            background-color: #2980b9;
-        }
+		    .card-content {
+		        padding: 20px;
+		        flex-grow: 1;
+		        display: flex;
+		        flex-direction: column;
+		    }
 
-    </style>
-</head>
-<body>
+		    .card-content h3 {
+		        margin-bottom: 10px;
+		        color: black;
+		    }
 
-    <header>
-        <h1>Mi Portafolio</h1>
-        <p>Desarrollador de Aplicaciones Multiplataforma</p>
-    </header>
-    <main>
-        <h2 class="section-title">Mis Proyectos Recientes</h2>
+		    .card-content p {
+		        font-size: 0.95rem;
+		        color: black;
+		        margin-bottom: 20px;
+		        flex-grow: 1;
+		    }
 
-        <section class="portfolio-grid">
-            
-            <article class="article-card">
-                <img src="img/Portada_duelo_magos.png" alt="Duelo de Magos">
-                <div class="card-content">
-                    <h3>Duelo de Magos</h3>
-                    <p>Un programa que simula las estadisticas de un duelo de magos en la terminal.</p>
-                    <a href="articulo1.html" class="btn-leer">Ver Proyecto</a>
-                </div>
-            </article>
+		    .btn-leer {
+		        display: inline-block;
+		        background-color: black;
+		        color: white;
+		        padding: 10px 20px;
+		        text-decoration: none;
+		        border-radius: 5px;
+		        text-align: center;
+		        font-weight: bold;
+		        align-self: flex-start;
+		    }
 
-            <article class="article-card">
-                <img src="img/Portada_lucha_dragones.png" alt="Lucha de Dragones">
-                <div class="card-content">
-                    <h3>Lucha de Dragones</h3>
-                    <p>Un programa que simula un entrenamiento y una lucha de dragones en la terminal.</p>
-                    <a href="articulo2.html" class="btn-leer">Ver Proyecto</a>
-                </div>
-            </article>
+		    .btn-leer:hover {
+		        background-color: #2980b9;
+		    }
 
-            <article class="article-card">
-                <img src="img/Portada_calculadora_matrices.png" alt="Calculadora de matrices">
-                <div class="card-content">
-                    <h3>Calculadora de matrices</h3>
-                    <p>Una calculadora en terminal, que tienes distintas funciones para operar con matrices.</p>
-                    <a href="articulo3.html" class="btn-leer">Ver Proyecto</a>
-                </div>
-            </article>
+		</style>
+	</head>
+	<body>
 
-        </section>
-    </main>
+		<header>
+		    <h1>Mi Portafolio</h1>
+		    <p>Desarrollador de Aplicaciones Multiplataforma</p>
+		    
+		    <div class="tech-icons">
+		        <i class="devicon-python-plain" title="Python"></i>
+				<i class="devicon-mysql-plain" title="MySQL"></i>
+				<i class="devicon-markdown-original" title="Markdown"></i>
+		        <i class="devicon-php-plain" title="PHP"></i>
+		        <i class="devicon-html5-plain" title="HTML5"></i>
+		        <i class="devicon-css3-plain" title="CSS3"></i>	
+		        <i class="devicon-javascript-plain" title="JavaScript"></i>
+		        </div>
+		</header>
 
-    <footer style="text-align: center; padding: 20px; color: black; margin-top: 50px;">
-        <p>&copy; 2025 Daniel Oliveira Vidal. Todos los derechos reservados.</p>
-    </footer>
+		
 
-</body>
+		<main>
+		    <h2 class="section-title">Mis Proyectos Recientes</h2>
+
+		    <section class="portfolio-grid">
+		        
+		        <article class="article-card">
+		            <img src="img/Portada_duelo_magos.png" alt="Duelo de Magos">
+		            <div class="card-content">
+		                <h3>Duelo de Magos</h3>
+		                <p>Un programa que simula las estadisticas de un duelo de magos en la terminal.</p>
+		                <a href="articulo1.html" class="btn-leer">Ver Proyecto</a>
+		            </div>
+		        </article>
+
+		        <article class="article-card">
+		            <img src="img/Portada_lucha_dragones.png" alt="Lucha de Dragones">
+		            <div class="card-content">
+		                <h3>Lucha de Dragones</h3>
+		                <p>Un programa que simula un entrenamiento y una lucha de dragones en la terminal.</p>
+		                <a href="articulo2.html" class="btn-leer">Ver Proyecto</a>
+		            </div>
+		        </article>
+
+		        <article class="article-card">
+		            <img src="img/Portada_calculadora_matrices.png" alt="Calculadora de matrices">
+		            <div class="card-content">
+		                <h3>Calculadora de matrices</h3>
+		                <p>Una calculadora en terminal, que tienes distintas funciones para operar con matrices.</p>
+		                <a href="articulo3.html" class="btn-leer">Ver Proyecto</a>
+		            </div>
+		        </article>
+
+		    </section>
+		</main>
+
+		<footer style="text-align: center; padding: 20px; color: black; margin-top: 50px;">
+		    <p>&copy; 2025 Daniel Oliveira Vidal. Todos los derechos reservados.</p>
+		</footer>
+
+	</body>
 </html>
