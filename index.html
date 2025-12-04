@@ -8,7 +8,6 @@
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
     <style>
-        /* --- ESTILOS GENERALES --- */
         * {
             margin: 0;
             padding: 0;
@@ -17,13 +16,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* CAMBIO: Quitamos el color plano y ponemos imagen de fondo */
-            /* background-color: #0a0908;  <-- Borrado */
-            
-            /* Agrega aquí tu imagen de fondo para toda la web */
             background-image: url('img/Fondo_pagina.png'); 
-            
-            /* Esto hace que la imagen cubra todo y se quede fija al hacer scroll */
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
@@ -33,7 +26,6 @@
             line-height: 1.6;
         }
 
-        /* --- CABECERA (BANNER HERO) --- */
         header {
             background-image: url('img/Banner_principal.png');
             background-size: cover;
@@ -46,8 +38,8 @@
             text-align: center;
             color: #e85d04;
             padding: 40px 20px;
-            /* Opcional: una sombra abajo para separar del fondo */
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+       		border-bottom: 15px solid rgba(0,0,0,0.5);
         }
 
         header h1 {
@@ -58,24 +50,22 @@
 
         header p {
             font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-            /* Añadido un fondo negro suave al texto para leerlo mejor si el banner es claro */
-            background-color: rgba(0,0,0,0.6);
-            padding: 5px 15px;
-            border-radius: 20px;
+		    font-weight: 300;
+		    margin-bottom: 25px;
+		    background-color: transparent; 
+		    padding: 0;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); 
+		    font-weight: bold; 
         }
 
-        /* --- ICONOS --- */
         .tech-icons {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            /* Añadido fondo suave para resaltar iconos sobre el banner */
-            background-color: rgba(0,0,0,0.6);
-            padding: 10px 20px;
-            border-radius: 10px;
+		    gap: 20px;
+		    flex-wrap: wrap;
+		    justify-content: center;
+		    background-color: transparent;
+		    padding: 10px 0; 
+		    border-radius: 0;
         }
 
         .tech-icons i {
@@ -91,21 +81,15 @@
             text-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
 
-        /* --- CONTENEDOR PRINCIPAL (MAIN) CON TRANSPARENCIA --- */
         main {
             max-width: 1200px;
-            margin: 50px auto;
-            
-            /* CAMBIO: Fondo negro con transparencia (0.85 es la opacidad) */
-            background-color: rgba(0, 0, 0, 0.8); 
-            
-            /* CAMBIO: Bordes redondeados y un poco de brillo/sombra */
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
-            border: 1px solid rgba(232, 93, 4, 0.3); /* Borde naranja sutil */
-
-            /* CAMBIO: Padding interno para que el contenido no toque el borde negro */
-            padding: 40px; 
+		    margin: 50px auto;
+		    background-color: #1c1c1c; 
+		    color: #e0e0e0; 
+		    border: 2px solid #e85d04;
+		    border-radius: 15px;
+		    box-shadow: 0 0 40px rgba(0,0,0,1); 
+		    padding: 40px;
         }
 
         h2.section-title {
@@ -116,7 +100,6 @@
             text-shadow: 1px 1px 2px black;
         }
 
-        /* --- GRID DE ARTÍCULOS --- */
         .portfolio-grid {
             display: flex;
             flex-wrap: wrap;
@@ -124,7 +107,6 @@
             justify-content: center;
         }
 
-        /* --- TARJETA DEL ARTÍCULO --- */
         .article-card {
             background: #e85d04;
             border-radius: 10px;
@@ -186,13 +168,10 @@
             color: #fff;
         }
 
-        /* CAMBIO: Estilos para el footer para que se vea sobre la imagen de fondo */
         footer {
             text-align: center; 
             padding: 20px; 
             margin-top: 50px;
-            
-            /* Texto blanco o naranja para que se lea sobre la imagen de fondo */
             color: #e85d04; 
             font-weight: bold;
             background-color: rgba(0,0,0,0.9); /* Fondo negro casi solido */
