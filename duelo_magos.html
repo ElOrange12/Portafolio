@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Personal</title>
+    
+    <link rel="icon" type="image/png" href="img/Icono_vuelta.png">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+		
+		/* Cuerpo base */
+		
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ff8100;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            background-repeat: no-repeat;
+            
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		/* Cabecera */
+		
+        header {
+            background-image: url('img/Portada_duelo_magos.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 30vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #e85d04;
+            padding: 40px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+       		border-bottom: 15px solid rgba(0,0,0,0.9);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        header p {
+            font-size: 1.2rem;
+		    font-weight: 300;
+		    margin-bottom: 25px;
+		    background-color: transparent; 
+		    padding: 0;
+		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); 
+		    font-weight: bold; 
+        }
+
+		/* Main */
+		
+        main {
+            max-width: 1200px;
+		    margin: 50px auto;
+		    background-color: #1c1c1c; 
+		    color: #e0e0e0; 
+		    border: 2px solid #e85d04;
+		    border-radius: 15px;
+		    box-shadow: 0 0 40px rgba(0,0,0,1); 
+		    padding: 40px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #e85d04;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        /* Boton de vuelta */
+        
+		.btn-inicio {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px; 
+            height: 60px;
+            
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        .btn-inicio img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* filter: invert(1); <-- Recuerda descomentar esto si tu logo es negro */
+        }
+
+        .btn-inicio:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+		
+		/* Pie de página */
+		
+        footer {
+            text-align: center; 
+            padding: 20px; 
+            margin-top: 50px;
+            color: #e85d04; 
+            font-weight: bold;
+            background-color: rgba(0,0,0,0.9); /* Fondo negro casi solido */
+        }
+
+    </style>
+</head>
+<body>
+
+   <header>
+   		<a href="https://elorange12.github.io/Portafolio" class="btn-inicio"><img src="img/Icono_vuelta.png" alt="Volver al Inicio"></a>
+        <h1>Duelo de Magos</h1>
+        <h2>Programa de Python</h2>
+    </header>
+
+    <main>
+        <h2 class="section-title">Mis Proyectos Recientes</h2>
+
+        <section class="portfolio-grid">
+            
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Daniel Oliveira Vidal. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

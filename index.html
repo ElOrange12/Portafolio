@@ -14,7 +14,9 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+		
+		/* Cuerpo base */
+		
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #ff8100;
@@ -26,7 +28,9 @@
             color: #333;
             line-height: 1.6;
         }
-
+		
+		/* Cabecera */
+		
         header {
             background-image: url('img/Banner_principal.png');
             background-size: cover;
@@ -59,6 +63,8 @@
 		    font-weight: bold; 
         }
 
+		/* Iconos de la cabecera */
+		
         .tech-icons {
             display: flex;
             gap: 20px;
@@ -81,7 +87,9 @@
             transform: scale(1.2);
             text-shadow: 0 0 10px rgba(255,255,255,0.5);
         }
-
+		
+		/* Main */
+		
         main {
             max-width: 1200px;
 		    margin: 50px auto;
@@ -107,7 +115,9 @@
             gap: 30px;
             justify-content: center;
         }
-
+		
+		/* Articulos del portafolio */
+		
         .article-card {
             background-color: #e85d04; 
             border: 2px solid #e85d04; 
@@ -132,7 +142,9 @@
             height: 200px;
             object-fit: cover;
         }
-
+		
+		/* Contenido de los articulos */
+		
         .card-content {
             padding: 20px;
             flex-grow: 1;
@@ -151,7 +163,9 @@
             margin-bottom: 20px;
             flex-grow: 1;
         }
-
+		
+		/* Botonoes de los articulos */
+		
         .btn-leer {
             display: inline-block;
             background-color: black;
@@ -170,11 +184,12 @@
             color: #fff;
         }
         
+        /* Boton de vuelta */
+        
 		.btn-inicio {
             position: absolute;
             top: 10px;
             right: 10px;
-            /* CAMBIO: Aumentamos el tamaño de 60px a 90px */
             width: 60px; 
             height: 60px;
             
@@ -182,7 +197,6 @@
             z-index: 10;
         }
 
-        /* El resto de estilos sigue igual */
         .btn-inicio img {
             width: 100%;
             height: 100%;
@@ -194,7 +208,9 @@
             transform: scale(1.1);
             cursor: pointer;
         }
-
+		
+		/* Pie de página */
+		
         footer {
             text-align: center; 
             padding: 20px; 
@@ -235,7 +251,7 @@
                 <div class="card-content">
                     <h3>Duelo de Magos</h3>
                     <p>Un programa que simula las estadisticas de un duelo de magos en la terminal.</p>
-                    <a href="articulo1.html" class="btn-leer">Más Información</a>
+                    <a href="duelo_magos.html" class="btn-leer">Más Información</a>
                 </div>
             </article>
 
