@@ -169,28 +169,29 @@
         }
         
 		.btn-inicio {
-		    position: absolute; /* Lo saca del flujo normal */
-		    top: 20px;          /* Distancia desde arriba */
-		    right: 20px;        /* Distancia desde la derecha */
-		    width: 60px;        /* Tamaño del botón */
-		    height: 60px;
-		    transition: transform 0.3s ease;
-		    z-index: 10;        /* Asegura que esté por encima de todo */
-		}
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            /* CAMBIO: Aumentamos el tamaño de 60px a 90px */
+            width: 90px; 
+            height: 90px;
+            
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
 
-		.btn-inicio img {
-		    width: 100%;
-		    height: 100%;
-		    object-fit: contain; /* Ajusta la imagen sin deformarla */
-		    
-		    /* Opcional: si tu logo es negro y no se ve, usa este filtro para volverlo blanco */
-		    /* filter: invert(1); */ 
-		}
+        /* El resto de estilos sigue igual */
+        .btn-inicio img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* filter: invert(1); <-- Recuerda descomentar esto si tu logo es negro */
+        }
 
-		.btn-inicio:hover {
-		    transform: scale(1.1); /* Efecto zoom al pasar el ratón */
-		    cursor: pointer;
-		}
+        .btn-inicio:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
 
         footer {
             text-align: center; 
@@ -206,7 +207,7 @@
 <body>
 
    <header>
-   		<a href="index.html" class="btn-inicio"><img src="img/mi_logo.png" alt="Volver al Inicio"></a>
+   		<a href="index.html" class="btn-inicio"><img src="img/Icono_vuelta.png" alt="Volver al Inicio"></a>
         <h1>Mi Portafolio</h1>
         <p>Desarrollador de Aplicaciones Multiplataforma</p>
         
