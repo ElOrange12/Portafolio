@@ -34,33 +34,15 @@
         header {
             background-image: url('img/Portada_duelo_magos.png');
             background-size: cover;
-            background-position: center;
             min-height: 30vh; 
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #e85d04;
-            padding: 40px 20px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
        		border-bottom: 15px solid rgba(0,0,0,0.9);
         }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
-
-        header p {
-            font-size: 1.2rem;
-		    font-weight: 300;
-		    margin-bottom: 25px;
-		    background-color: transparent; 
-		    padding: 0;
-		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); 
-		    font-weight: bold; 
+        
+        header img{
+        	width: 300%;
+            height: 200%;
         }
 
 		/* Main */
@@ -89,6 +71,74 @@
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
+        }
+		
+		/* Articulos del portafolio */
+		
+        .article-card {
+            background-color: #e85d04; 
+            border: 2px solid #e85d04; 
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+            overflow: hidden;
+            width: 300px;
+            flex: 1 1 300px;
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(232, 93, 4, 0.6); 
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+		
+		/* Contenido de los articulos */
+		
+        .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            color: black;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+		
+		/* Botonoes de los articulos */
+		
+        .btn-leer {
+            display: inline-block;
+            background-color: black;
+            color: darkorange;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            align-self: flex-start;
+            transition: background 0.3s;
+        }
+
+        .btn-leer:hover {
+            background-color: #333; /* Un gris muy oscuro en vez de azul */
+            color: #fff;
         }
         
         /* Boton de vuelta */
@@ -133,14 +183,13 @@
 
    <header>
    		<a href="https://elorange12.github.io/Portafolio" class="btn-inicio"><img src="img/Icono_vuelta.png" alt="Volver al Inicio"></a>
-        <h1>Duelo de Magos</h1>
-        <h2>Programa de Python</h2>
     </header>
 
     <main>
         <h2 class="section-title">Mis Proyectos Recientes</h2>
 
         <section class="portfolio-grid">
+        	<article> Este programa consiste en un duelo de un mago contro un escudo protector, este en base a la edad que el usuario introduzca se le atribuiran ciertas estadisticas y este en dos turnos utilizando dos hechizos distintos probará a derrotar a este escuco protector. </article>
             
         </section>
     </main>
