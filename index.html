@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #cc5803;
+            background: #ff8100;
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
@@ -108,21 +108,22 @@
         }
 
         .article-card {
-            background: #e85d04;
+            background-color: #e85d04; 
+            border: 2px solid #e85d04; 
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Sombra un poco más oscura */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
             overflow: hidden;
             width: 300px;
             flex: 1 1 300px;
             max-width: 350px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
         .article-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(232, 93, 4, 0.4); /* Resplandor naranja al pasar mouse */
+            box-shadow: 0 0 15px rgba(232, 93, 4, 0.6); 
         }
 
         .article-card img {
