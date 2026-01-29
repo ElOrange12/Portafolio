@@ -1,284 +1,284 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio Personal</title>
-    
-    <link rel="icon" type="image/png" href="img/FavIcon.png">
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Mi Portafolio Personal</title>
 		
-		/* Cuerpo base */
-		
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #ff8100;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; 
-            background-repeat: no-repeat;
-            
-            color: #333;
-            line-height: 1.6;
-        }
-		
-		/* Cabecera */
-		
-        header {
-            background-image: url('img/Banner_principal.png');
-            background-size: cover;
-            background-position: center;
-            min-height: 40vh; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #e85d04;
-            padding: 40px 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-       		border-bottom: 15px solid rgba(0,0,0,0.9);
-        }
+		<link rel="icon" type="image/png" href="img/FavIcon.png">
+		<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
+		<style>
+		    * {
+		        margin: 0;
+		        padding: 0;
+		        box-sizing: border-box;
+		    }
+			
+			/* Cuerpo base */
+			
+		    body {
+		        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		        background: #ff8100;
+		        background-size: cover;
+		        background-position: center;
+		        background-attachment: fixed; 
+		        background-repeat: no-repeat;
+		        
+		        color: #333;
+		        line-height: 1.6;
+		    }
+			
+			/* Cabecera */
+			
+		    header {
+		        background-image: url('img/Banner_principal.png');
+		        background-size: cover;
+		        background-position: center;
+		        min-height: 40vh; 
+		        display: flex;
+		        flex-direction: column;
+		        justify-content: center;
+		        align-items: center;
+		        text-align: center;
+		        color: #e85d04;
+		        padding: 40px 20px;
+		        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+		   		border-bottom: 15px solid rgba(0,0,0,0.9);
+		    }
 
-        header p {
-            font-size: 1.2rem;
-		    font-weight: 300;
-		    margin-bottom: 25px;
-		    background-color: transparent; 
-		    padding: 0;
-		    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); 
-		    font-weight: bold; 
-        }
+		    header h1 {
+		        font-size: 3rem;
+		        margin-bottom: 10px;
+		        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+		    }
 
-		/* Iconos de la cabecera */
-		
-        .tech-icons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            background-color: #1c1c1c;
-            padding: 15px 30px;
-            border-radius: 15px;
-            border: 2px solid #e85d04;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
+		    header p {
+		        font-size: 1.2rem;
+				font-weight: 300;
+				margin-bottom: 25px;
+				background-color: transparent; 
+				padding: 0;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); 
+				font-weight: bold; 
+		    }
 
-        .tech-icons i {
-            font-size: 2.5rem;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
+			/* Iconos de la cabecera */
+			
+		    .tech-icons {
+		        display: flex;
+		        gap: 20px;
+		        flex-wrap: wrap;
+		        justify-content: center;
+		        background-color: #1c1c1c;
+		        padding: 15px 30px;
+		        border-radius: 15px;
+		        border: 2px solid #e85d04;
+		        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+		    }
 
-        .tech-icons i:hover {
-            transform: scale(1.2);
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-		
-		/* Main */
-		
-        main {
-            max-width: 1200px;
-		    margin: 50px auto;
-		    background-color: #1c1c1c; 
-		    color: #e0e0e0; 
-		    border: 2px solid #e85d04;
-		    border-radius: 15px;
-		    box-shadow: 0 0 40px rgba(0,0,0,1); 
-		    padding: 40px;
-        }
+		    .tech-icons i {
+		        font-size: 2.5rem;
+		        transition: all 0.3s ease;
+		        cursor: default;
+		    }
 
-        h2.section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: #e85d04;
-            text-shadow: 1px 1px 2px black;
-        }
+		    .tech-icons i:hover {
+		        transform: scale(1.2);
+		        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+		    }
+			
+			/* Main */
+			
+		    main {
+		        max-width: 1200px;
+				margin: 50px auto;
+				background-color: #1c1c1c; 
+				color: #e0e0e0; 
+				border: 2px solid #e85d04;
+				border-radius: 15px;
+				box-shadow: 0 0 40px rgba(0,0,0,1); 
+				padding: 40px;
+		    }
 
-        .portfolio-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-		
-		/* Articulos del portafolio */
-		
-        .article-card {
-            background-color: #e85d04; 
-            border: 2px solid #e85d04; 
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-            overflow: hidden;
-            width: 300px;
-            flex: 1 1 300px;
-            max-width: 350px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
+		    h2.section-title {
+		        text-align: center;
+		        margin-bottom: 40px;
+		        font-size: 2rem;
+		        color: #e85d04;
+		        text-shadow: 1px 1px 2px black;
+		    }
 
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px rgba(232, 93, 4, 0.6); 
-        }
+		    .portfolio-grid {
+		        display: flex;
+		        flex-wrap: wrap;
+		        gap: 30px;
+		        justify-content: center;
+		    }
+			
+			/* Articulos del portafolio */
+			
+		    .article-card {
+		        background-color: #e85d04; 
+		        border: 2px solid #e85d04; 
+		        border-radius: 10px;
+		        box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+		        overflow: hidden;
+		        width: 300px;
+		        flex: 1 1 300px;
+		        max-width: 350px;
+		        transition: transform 0.3s ease, box-shadow 0.3s ease;
+		        display: flex;
+		        flex-direction: column;
+		    }
 
-        .article-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-		
-		/* Contenido de los articulos */
-		
-        .card-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
+		    .article-card:hover {
+		        transform: translateY(-5px);
+		        box-shadow: 0 0 15px rgba(232, 93, 4, 0.6); 
+		    }
 
-        .card-content h3 {
-            margin-bottom: 10px;
-            color: black;
-        }
+		    .article-card img {
+		        width: 100%;
+		        height: 200px;
+		        object-fit: cover;
+		    }
+			
+			/* Contenido de los articulos */
+			
+		    .card-content {
+		        padding: 20px;
+		        flex-grow: 1;
+		        display: flex;
+		        flex-direction: column;
+		    }
 
-        .card-content p {
-            font-size: 0.95rem;
-            color: black;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-		
-		/* Botonoes de los articulos */
-		
-        .btn-leer {
-            display: inline-block;
-            background-color: black;
-            color: darkorange;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            align-self: flex-start;
-            transition: background 0.3s;
-        }
+		    .card-content h3 {
+		        margin-bottom: 10px;
+		        color: black;
+		    }
 
-        .btn-leer:hover {
-            background-color: #333; /* Un gris muy oscuro en vez de azul */
-            color: #fff;
-        }
-        
-        /* Boton de vuelta */
-        
-		.btn-inicio {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 60px; 
-            height: 60px;
-            
-            transition: transform 0.3s ease;
-            z-index: 10;
-        }
+		    .card-content p {
+		        font-size: 0.95rem;
+		        color: black;
+		        margin-bottom: 20px;
+		        flex-grow: 1;
+		    }
+			
+			/* Botonoes de los articulos */
+			
+		    .btn-leer {
+		        display: inline-block;
+		        background-color: black;
+		        color: darkorange;
+		        padding: 10px 20px;
+		        text-decoration: none;
+		        border-radius: 5px;
+		        text-align: center;
+		        font-weight: bold;
+		        align-self: flex-start;
+		        transition: background 0.3s;
+		    }
 
-        .btn-inicio img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            /* filter: invert(1); <-- Recuerda descomentar esto si tu logo es negro */
-        }
+		    .btn-leer:hover {
+		        background-color: #333; /* Un gris muy oscuro en vez de azul */
+		        color: #fff;
+		    }
+		    
+		    /* Boton de vuelta */
+		    
+			.btn-inicio {
+		        position: absolute;
+		        top: 10px;
+		        right: 10px;
+		        width: 60px; 
+		        height: 60px;
+		        
+		        transition: transform 0.3s ease;
+		        z-index: 10;
+		    }
 
-        .btn-inicio:hover {
-            transform: scale(1.1);
-            cursor: pointer;
-        }
-		
-		/* Pie de página */
-		
-        footer {
-            text-align: center; 
-            padding: 20px; 
-            margin-top: 50px;
-            color: #e85d04; 
-            font-weight: bold;
-            background-color: rgba(0,0,0,0.9); /* Fondo negro casi solido */
-        }
+		    .btn-inicio img {
+		        width: 100%;
+		        height: 100%;
+		        object-fit: contain;
+		        /* filter: invert(1); <-- Recuerda descomentar esto si tu logo es negro */
+		    }
 
-    </style>
-</head>
-<body>
+		    .btn-inicio:hover {
+		        transform: scale(1.1);
+		        cursor: pointer;
+		    }
+			
+			/* Pie de página */
+			
+		    footer {
+		        text-align: center; 
+		        padding: 20px; 
+		        margin-top: 50px;
+		        color: #e85d04; 
+		        font-weight: bold;
+		        background-color: rgba(0,0,0,0.9); /* Fondo negro casi solido */
+		    }
 
-   <header>
-   		<a href="https://elorange12.github.io/Pagina-web" class="btn-inicio"><img src="img/Icono_home.png" alt="Volver al Inicio"></a>
-        <h1>Daniel Oliveira Vidal</h1>
-        <h2>Portafolio-WEB</h2>
-        <p>Desarrollador de Aplicaciones Multiplataforma</p>
-        
-        
-        <div class="tech-icons">
-            <i class="devicon-python-plain colored" title="Python"></i>
-            <i class="devicon-html5-plain colored" title="HTML5"></i>
-            <i class="devicon-mysql-plain colored" title="MySQL"></i>
-            <i class="devicon-php-plain colored" title="PHP"></i>              
-            <i class="devicon-css3-plain colored" title="CSS3"></i>    
-            <i class="devicon-javascript-plain colored" title="JavaScript"></i>
-        </div>
-    </header>
+		</style>
+	</head>
+	<body>
 
-    <main>
-        <h2 class="section-title">Mis Proyectos Recientes</h2>
+	   <header>
+	   		<a href="https://elorange12.github.io/Pagina-web" class="btn-inicio"><img src="img/Icono_home.png" alt="Volver al Inicio"></a>
+		    <h1>Daniel Oliveira Vidal</h1>
+		    <h2>Portafolio-WEB</h2>
+		    <p>Desarrollador de Aplicaciones Multiplataforma</p>
+		    
+		    
+		    <div class="tech-icons">
+		        <i class="devicon-python-plain colored" title="Python"></i>
+		        <i class="devicon-html5-plain colored" title="HTML5"></i>
+		        <i class="devicon-mysql-plain colored" title="MySQL"></i>
+		        <i class="devicon-php-plain colored" title="PHP"></i>              
+		        <i class="devicon-css3-plain colored" title="CSS3"></i>    
+		        <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+		    </div>
+		</header>
 
-        <section class="portfolio-grid">
-            
-            <article class="article-card">
-                <img src="img/Portada_duelo_magos.png" alt="Duelo de Magos">
-                <div class="card-content">
-                    <h3>Duelo de Magos</h3>
-                    <p>Un programa que simula las estadisticas de un duelo de magos en la terminal.</p>
-                    <a href="duelo_magos.html" class="btn-leer">Más Información</a>
-                </div>
-            </article>
+		<main>
+		    <h2 class="section-title">Mis Proyectos Recientes</h2>
 
-            <article class="article-card">
-                <img src="img/Portada_lucha_dragones.png" alt="Lucha de Dragones">
-                <div class="card-content">
-                    <h3>Lucha de Dragones</h3>
-                    <p>Un programa que simula un entrenamiento y una lucha de dragones en la terminal.</p>
-                    <a href="articulo2.html" class="btn-leer">Más Información</a>
-                </div>
-            </article>
+		    <section class="portfolio-grid">
+		        
+		        <article class="article-card">
+		            <img src="img/Portada_duelo_magos.png" alt="Duelo de Magos">
+		            <div class="card-content">
+		                <h3>Duelo de Magos</h3>
+		                <p>Un programa que simula las estadisticas de un duelo de magos en la terminal.</p>
+		                <a href="duelo_magos.html" class="btn-leer">Más Información</a>
+		            </div>
+		        </article>
 
-            <article class="article-card">
-                <img src="img/Portada_calculadora_matrices.png" alt="Calculadora de matrices">
-                <div class="card-content">
-                    <h3>Calculadora de matrices</h3>
-                    <p>Una calculadora en terminal, que tienes distintas funciones para operar con matrices.</p>
-                    <a href="articulo3.html" class="btn-leer">Más Información</a>
-                </div>
-            </article>
+		        <article class="article-card">
+		            <img src="img/Portada_lucha_dragones.png" alt="Lucha de Dragones">
+		            <div class="card-content">
+		                <h3>Lucha de Dragones</h3>
+		                <p>Un programa que simula un entrenamiento y una lucha de dragones en la terminal.</p>
+		                <a href="articulo2.html" class="btn-leer">Más Información</a>
+		            </div>
+		        </article>
 
-        </section>
-    </main>
+		        <article class="article-card">
+		            <img src="img/Portada_calculadora_matrices.png" alt="Calculadora de matrices">
+		            <div class="card-content">
+		                <h3>Calculadora de matrices</h3>
+		                <p>Una calculadora en terminal, que tienes distintas funciones para operar con matrices.</p>
+		                <a href="articulo3.html" class="btn-leer">Más Información</a>
+		            </div>
+		        </article>
 
-    <footer>
-        <p>&copy; 2025 Daniel Oliveira Vidal. Todos los derechos reservados.</p>
-    </footer>
+		    </section>
+		</main>
 
-</body>
+		<footer>
+		    <p>&copy; 2025 Daniel Oliveira Vidal. Todos los derechos reservados.</p>
+		</footer>
+
+	</body>
 </html>
