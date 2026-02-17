@@ -1,284 +1,367 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Mi Portafolio Personal</title>
-		
-		<link rel="icon" type="image/png" href="img/FavIcon.png">
-		<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio DAM | Tu Nombre</title>
+    <link rel="icon" type="image/png" href="img/FavIcon.png">
+    <style>
+        /* --- VARIABLES DE COLOR (Naranja, Negro, Grises) --- */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1E1E1E;
+            --text-main: #E0E0E0;
+            --text-muted: #A0A0A0;
+            --accent: #FF6B00;         /* Naranja Principal */
+            --accent-hover: #e65100;
+            --border-color: #333;
+        }
 
-		<style>
-		    * {
-		        margin: 0;
-		        padding: 0;
-		        box-sizing: border-box;
-		    }
-			
-			/* Cuerpo base */
-			
-		    body {
-		        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-		        background: #ff8100;
-		        background-size: cover;
-		        background-position: center;
-		        background-attachment: fixed; 
-		        background-repeat: no-repeat;
-		        
-		        color: #333;
-		        line-height: 1.6;
-		    }
-			
-			/* Cabecera */
-			
-		    header {
-		        background-image: url('img/Banner_principal.png');
-		        background-size: cover;
-		        background-position: center;
-		        min-height: 40vh; 
-		        display: flex;
-		        flex-direction: column;
-		        justify-content: center;
-		        align-items: center;
-		        text-align: center;
-		        color: #e85d04;
-		        padding: 40px 20px;
-		        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-		   		border-bottom: 15px solid rgba(0,0,0,0.9);
-		    }
+        /* --- ESTILOS GENERALES (Reset básico) --- */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-		    header h1 {
-		        font-size: 3rem;
-		        margin-bottom: 10px;
-		        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-		    }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; padding: 0; margin: 0; }
 
-		    header p {
-		        font-size: 1.2rem;
-				font-weight: 300;
-				margin-bottom: 25px;
-				background-color: transparent; 
-				padding: 0;
-				text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); 
-				font-weight: bold; 
-		    }
+        /* --- HEADER (Estilo #1: Limpio y espaciado) --- */
+        header {
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(18, 18, 18, 0.95);
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
 
-			/* Iconos de la cabecera */
-			
-		    .tech-icons {
-		        display: flex;
-		        gap: 20px;
-		        flex-wrap: wrap;
-		        justify-content: center;
-		        background-color: #1c1c1c;
-		        padding: 15px 30px;
-		        border-radius: 15px;
-		        border: 2px solid #e85d04;
-		        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-		    }
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+        .logo span { color: var(--accent); }
 
-		    .tech-icons i {
-		        font-size: 2.5rem;
-		        transition: all 0.3s ease;
-		        cursor: default;
-		    }
+        nav ul { display: flex; gap: 25px; }
+        nav a:hover { color: var(--accent); }
 
-		    .tech-icons i:hover {
-		        transform: scale(1.2);
-		        text-shadow: 0 0 10px rgba(255,255,255,0.5);
-		    }
-			
-			/* Main */
-			
-		    main {
-		        max-width: 1200px;
-				margin: 50px auto;
-				background-color: #1c1c1c; 
-				color: #e0e0e0; 
-				border: 2px solid #e85d04;
-				border-radius: 15px;
-				box-shadow: 0 0 40px rgba(0,0,0,1); 
-				padding: 40px;
-		    }
+        /* --- HERO SECTION (Estilo #1: Centrado e Impactante) --- */
+        /* --- HERO SECTION (Modificado para Imagen + Overlay) --- */
+        .hero {
+            position: relative; /* Necesario para posicionar el overlay */
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            /* REEMPLAZA ESTO CON LA RUTA DE TU IMAGEN */
+            background-image: url('img/FondoCartelera.png'); 
+            background-size: cover;    /* La imagen cubre todo el espacio */
+            background-position: center; /* La imagen se centra */
+            overflow: hidden;
+        }
 
-		    h2.section-title {
-		        text-align: center;
-		        margin-bottom: 40px;
-		        font-size: 2rem;
-		        color: #e85d04;
-		        text-shadow: 1px 1px 2px black;
-		    }
+        /* --- EL OVERLAY GRIS SEMI-TRANSPARENTE --- */
+        /* Esto crea una capa "virtual" entre la imagen de fondo y el texto */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Color gris oscuro (18,18,18) con 85% de opacidad (0.85) */
+            /* Ajusta el 0.85 si lo quieres más claro (ej. 0.6) o más oscuro (ej. 0.9) */
+            background-color: rgba(18, 18, 18, 0.85); 
+            z-index: 1; /* Capa intermedia */
+        }
 
-		    .portfolio-grid {
-		        display: flex;
-		        flex-wrap: wrap;
-		        gap: 30px;
-		        justify-content: center;
-		    }
-			
-			/* Articulos del portafolio */
-			
-		    .article-card {
-		        background-color: #e85d04; 
-		        border: 2px solid #e85d04; 
-		        border-radius: 10px;
-		        box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-		        overflow: hidden;
-		        width: 300px;
-		        flex: 1 1 300px;
-		        max-width: 350px;
-		        transition: transform 0.3s ease, box-shadow 0.3s ease;
-		        display: flex;
-		        flex-direction: column;
-		    }
+        /* --- ASEGURAR QUE EL CONTENIDO ESTÉ ENCIMA DEL GRIS --- */
+        /* Selecciona todos los elementos directos dentro de .hero (h1, h2, p, a) */
+        .hero > * {
+            position: relative;
+            z-index: 2; /* Capa superior (por encima del overlay) */
+        }
 
-		    .article-card:hover {
-		        transform: translateY(-5px);
-		        box-shadow: 0 0 15px rgba(232, 93, 4, 0.6); 
-		    }
+        /* Estilos de texto (se mantienen igual) */
+        .hero h2 {
+            color: var(--accent);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
 
-		    .article-card img {
-		        width: 100%;
-		        height: 200px;
-		        object-fit: cover;
-		    }
-			
-			/* Contenido de los articulos */
-			
-		    .card-content {
-		        padding: 20px;
-		        flex-grow: 1;
-		        display: flex;
-		        flex-direction: column;
-		    }
+        .hero h1 {
+            font-size: 3.8rem;
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+            /* Opcional: sombra suave al texto para mejor lectura sobre imagen */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
+        }
 
-		    .card-content h3 {
-		        margin-bottom: 10px;
-		        color: black;
-		    }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin-bottom: 40px;
+        }
 
-		    .card-content p {
-		        font-size: 0.95rem;
-		        color: black;
-		        margin-bottom: 20px;
-		        flex-grow: 1;
-		    }
-			
-			/* Botonoes de los articulos */
-			
-		    .btn-leer {
-		        display: inline-block;
-		        background-color: black;
-		        color: darkorange;
-		        padding: 10px 20px;
-		        text-decoration: none;
-		        border-radius: 5px;
-		        text-align: center;
-		        font-weight: bold;
-		        align-self: flex-start;
-		        transition: background 0.3s;
-		    }
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1rem;
+            border: 1px solid var(--accent);
+        }
 
-		    .btn-leer:hover {
-		        background-color: #333; /* Un gris muy oscuro en vez de azul */
-		        color: #fff;
-		    }
-		    
-		    /* Boton de vuelta */
-		    
-			.btn-inicio {
-		        position: absolute;
-		        top: 10px;
-		        right: 10px;
-		        width: 60px; 
-		        height: 60px;
-		        
-		        transition: transform 0.3s ease;
-		        z-index: 10;
-		    }
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
 
-		    .btn-inicio img {
-		        width: 100%;
-		        height: 100%;
-		        object-fit: contain;
-		        /* filter: invert(1); <-- Recuerda descomentar esto si tu logo es negro */
-		    }
+        /* --- SECCIONES COMUNES --- */
+        section { padding: 80px 10%; }
 
-		    .btn-inicio:hover {
-		        transform: scale(1.1);
-		        cursor: pointer;
-		    }
-			
-			/* Pie de página */
-			
-		    footer {
-		        text-align: center; 
-		        padding: 20px; 
-		        margin-top: 50px;
-		        color: #e85d04; 
-		        font-weight: bold;
-		        background-color: rgba(0,0,0,0.9); /* Fondo negro casi solido */
-		    }
+        /* Título Estilo #1: Borde lateral naranja */
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            border-left: 6px solid var(--accent);
+            padding-left: 20px;
+            color: white;
+        }
 
-		</style>
-	</head>
-	<body>
+        /* --- SKILLS GRID (Adaptado a tu Stack) --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
 
-	   <header>
-	   		<a href="https://elorange12.github.io/Pagina-web" class="btn-inicio"><img src="img/Icono_home.png" alt="Volver al Inicio"></a>
-		    <h1>Daniel Oliveira Vidal</h1>
-		    <h2>Portafolio-WEB</h2>
-		    <p>Desarrollador de Aplicaciones Multiplataforma</p>
-		    
-		    
-		    <div class="tech-icons">
-		        <i class="devicon-python-plain colored" title="Python"></i>
-		        <i class="devicon-html5-plain colored" title="HTML5"></i>
-		        <i class="devicon-mysql-plain colored" title="MySQL"></i>
-		        <i class="devicon-php-plain colored" title="PHP"></i>              
-		        <i class="devicon-css3-plain colored" title="CSS3"></i>    
-		        <i class="devicon-javascript-plain colored" title="JavaScript"></i>
-		    </div>
-		</header>
+        .skill-category h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; }
+        
+        .skill-list { display: flex; flex-wrap: wrap; gap: 10px; }
+        
+        .skill-tag {
+            background-color: #252525;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+        }
+        .skill-tag:hover { border-color: var(--accent); color: white; }
 
-		<main>
-		    <h2 class="section-title">Mis Proyectos Recientes</h2>
+        /* --- PROYECTOS GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
 
-		    <section class="portfolio-grid">
-		        
-		        <article class="article-card">
-		            <img src="img/Portada_duelo_magos.png" alt="Duelo de Magos">
-		            <div class="card-content">
-		                <h3>Duelo de Magos</h3>
-		                <p>Un programa que simula las estadisticas de un duelo de magos en la terminal.</p>
-		                <a href="duelo_magos.html" class="btn-leer">Más Información</a>
-		            </div>
-		        </article>
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
 
-		        <article class="article-card">
-		            <img src="img/Portada_lucha_dragones.png" alt="Lucha de Dragones">
-		            <div class="card-content">
-		                <h3>Lucha de Dragones</h3>
-		                <p>Un programa que simula un entrenamiento y una lucha de dragones en la terminal.</p>
-		                <a href="articulo2.html" class="btn-leer">Más Información</a>
-		            </div>
-		        </article>
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--accent);
+        }
 
-		        <article class="article-card">
-		            <img src="img/Portada_calculadora_matrices.png" alt="Calculadora de matrices">
-		            <div class="card-content">
-		                <h3>Calculadora de matrices</h3>
-		                <p>Una calculadora en terminal, que tienes distintas funciones para operar con matrices.</p>
-		                <a href="articulo3.html" class="btn-leer">Más Información</a>
-		            </div>
-		        </article>
+        /* Área superior de la tarjeta (para imagen o icono de código) */
+        .card-visual {
+            height: 180px;
+            background-color: #181818;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #333;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-		    </section>
-		</main>
+        .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-content h3 { margin: 0 0 10px 0; font-size: 1.4rem; }
+        .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
 
-		<footer>
-		    <p>&copy; Daniel Oliveira Vidal. Todos los derechos reservados.</p>
-		</footer>
+        .tech-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+        .badge { 
+            font-size: 0.75rem; 
+            color: var(--accent); 
+            background: rgba(255, 107, 0, 0.08); 
+            padding: 4px 8px; 
+            border-radius: 2px;
+            font-family: monospace;
+        }
 
-	</body>
+        .card-actions { display: flex; gap: 15px; }
+        .link-text { font-weight: bold; font-size: 0.9rem; border-bottom: 1px solid transparent; }
+        .link-text:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px;
+            background-color: #0f0f0f;
+            border-top: 1px solid var(--border-color);
+            color: #666;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            header { flex-direction: column; gap: 15px; }
+        }
+        
+        /* --- BOTÓN ESPECIAL DEL HEADER --- */
+        .btn-header {
+            border: 2px solid var(--accent); /* Borde naranja */
+            padding: 8px 20px;               /* Espacio interno */
+            border-radius: 4px;              /* Bordes redondeados */
+            color: var(--accent) !important; /* Texto naranja */
+            font-weight: bold;
+            transition: all 0.3s ease;       /* Suavizado */
+        }
+
+        /* Efecto al pasar el ratón (Hover) */
+        .btn-header:hover {
+            background-color: var(--accent); /* Fondo naranja */
+            color: white !important;         /* Texto blanco */
+            box-shadow: 0 0 10px rgba(255, 107, 0, 0.4); /* Brillo suave */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">OrangeDev<span>Portfolio</span></div>
+        <nav>
+            <ul>
+                <li><a href="#skills">Tecnologías</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                
+                <li><a href="https://" target="_blank" class="btn-header">Mi Web</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Estudiante de DAM</h2>
+        <h1>Desarrollo Multiplataforma <br> & Backend Logic</h1>
+        <p>Construyendo soluciones robustas con pasión por el código limpio. Especializado en la integración de bases de datos y desarrollo web completo.</p>
+        <a href="#proyectos" class="btn">Ver mi trabajo</a>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Mi Stack Tecnológico</h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Backend & Scripting</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Bases de Datos</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Frontend Web</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos">
+        <h2 class="section-title">Proyectos Recientes</h2>
+        <div class="projects-grid">
+            
+            <article class="project-card">
+                <div class="card-visual">
+                    <span>&#128202;</span> </div>
+                <div class="card-content">
+                    <h3>Sistema de Gestión de Stock</h3>
+                    <p>Aplicación web completa para administración de inventarios. Implementa arquitectura MVC y autenticación segura de usuarios.</p>
+                    <div class="tech-badges">
+                        <span class="badge">PHP</span>
+                        <span class="badge">MySQL</span>
+                        <span class="badge">HTML/CSS</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="link-text">Ver Código en GitHub</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="card-visual">
+                    <span>&#129302;</span> </div>
+                <div class="card-content">
+                    <h3>Bot de Automatización</h3>
+                    <p>Script en Python diseñado para extraer y procesar datos automáticamente (Web Scraping) y guardarlos en estructura JSON.</p>
+                    <div class="tech-badges">
+                        <span class="badge">Python</span>
+                        <span class="badge">JSON</span>
+                        <span class="badge">Scripting</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="link-text">Ver Script</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="card-visual">
+                    <span>&#127760;</span> </div>
+                <div class="card-content">
+                    <h3>API REST NoSQL</h3>
+                    <p>Backend para red social temática. Gestión de usuarios y publicaciones utilizando base de datos documental.</p>
+                    <div class="tech-badges">
+                        <span class="badge">Node.js</span>
+                        <span class="badge">MongoDB</span>
+                        <span class="badge">JavaScript</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="link-text">Documentación</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <p>¿Tienes una idea en mente? Hablemos.</p>
+        <p style="color: var(--accent);">danieloliveiravidal12@gmail.com</p>
+        <p style="margin-top: 30px; font-size: 0.8rem;">&copy; 2026 Estudiante DAM. All Rights Reserved.</p>
+    </footer>
+
+</body>
 </html>
