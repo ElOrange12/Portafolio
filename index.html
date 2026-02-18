@@ -183,16 +183,32 @@
             border-color: var(--accent);
         }
 
-        /* Área superior de la tarjeta (para imagen o icono de código) */
+       /* --- ESTILOS PARA LAS TARJETAS DE PROYECTOS --- */
+        
+        /* Contenedor gris oscuro de la parte superior */
         .card-visual {
             height: 180px;
-            background-color: #181818;
+            background-color: #181818; /* Fondo oscuro neutro */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: #333;
             border-bottom: 1px solid var(--border-color);
+            overflow: hidden; /* Para que nada se salga */
+            position: relative;
+        }
+
+        /* La imagen de tu icono (Logo de la App) */
+        .app-icon {
+            width: 100px;  /* Tamaño del icono */
+            height: 100px;
+            object-fit: contain; /* Asegura que el icono no se recorte */
+            filter: drop-shadow(0 0 10px rgba(255, 107, 0, 0.3)); /* Sombra naranja suave */
+            transition: transform 0.3s ease;
+        }
+
+        /* Efecto al pasar el ratón por la tarjeta completa */
+        .project-card:hover .app-icon {
+            transform: scale(1.1); /* El icono crece un poquito */
         }
 
         .card-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
@@ -305,51 +321,81 @@
             
             <article class="project-card">
                 <div class="card-visual">
-                    <span>&#128202;</span> </div>
+                	<img src="img/Logo GymMetrics.png" alt="Icono GymMetrics" class="app-icon"> </div>
                 <div class="card-content">
-                    <h3>Sistema de Gestión de Stock</h3>
+                    <h3>GymMetrics</h3>
+                    <p>Sistema de gestión de entrenamientos diseñado para registrar, monitorear y optimizar rutinas de ejercicios personalizadas.</p>
+                    <div class="tech-badges">
+                        <span class="badge">PHP</span>
+                        <span class="badge">MySQL</span>
+                        <span class="badge">HTML/CSS</span>
+                        <span class="badge">JavaScript</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="link-text">Más información</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="project-card">
+                <div class="card-visual">
+                    <img src="img/Logo adminviews.png" alt="Icono AdminViews" class="app-icon"> </div>
+                <div class="card-content">
+                    <h3>AdminViews</h3>
                     <p>Aplicación web completa para administración de inventarios. Implementa arquitectura MVC y autenticación segura de usuarios.</p>
                     <div class="tech-badges">
                         <span class="badge">PHP</span>
                         <span class="badge">MySQL</span>
                         <span class="badge">HTML/CSS</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="#" class="link-text">Ver Código en GitHub</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="card-visual">
-                    <span>&#129302;</span> </div>
-                <div class="card-content">
-                    <h3>Bot de Automatización</h3>
-                    <p>Script en Python diseñado para extraer y procesar datos automáticamente (Web Scraping) y guardarlos en estructura JSON.</p>
-                    <div class="tech-badges">
-                        <span class="badge">Python</span>
-                        <span class="badge">JSON</span>
-                        <span class="badge">Scripting</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="#" class="link-text">Ver Script</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="card-visual">
-                    <span>&#127760;</span> </div>
-                <div class="card-content">
-                    <h3>API REST NoSQL</h3>
-                    <p>Backend para red social temática. Gestión de usuarios y publicaciones utilizando base de datos documental.</p>
-                    <div class="tech-badges">
-                        <span class="badge">Node.js</span>
-                        <span class="badge">MongoDB</span>
                         <span class="badge">JavaScript</span>
                     </div>
                     <div class="card-actions">
-                        <a href="#" class="link-text">Documentación</a>
+                        <a href="" class="link-text">Mas Información</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="card-visual">
+                    <img src="img/Logo DueloMagos.png" alt="Icono Duelo de magos" class="app-icon"> </div>
+                <div class="card-content">
+                    <h3>Duelo de Magos</h3>
+                    <p>Minijuego de estrategia donde un mago debe gestionar sus recursos para derribar una barrera mágica antes de que se agoten los dos turnos disponibles.</p>
+                    <div class="tech-badges">
+                        <span class="badge">Python</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="link-text">Más Información</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="card-visual">
+                	<img src="img/Logo DueloDragones.png" alt="Icono Duelo de dragones" class="app-icon"> </div>
+                <div class="card-content">
+                    <h3>Duelo de Dragones</h3>
+                    <p>Aplicación de consola que simula enfrentamientos dinámicos mediante un robusto sistema de clases y gestión de atributos.</p>
+                    <div class="tech-badges">
+                        <span class="badge">Python</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="link-text">Más información</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="project-card">
+                <div class="card-visual">
+                	<img src="img/Logo CDM.png" alt="Icono Calculadora de Matrices" class="app-icon"> </div>
+                <div class="card-content">
+                    <h3>Calculadora de Matrices</h3>
+                    <p>Aplicación de consola que implementa lógica matemática avanzada para el procesamiento eficiente de matrices.</p>
+                    <div class="tech-badges">
+                        <span class="badge">Python</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="link-text">Más información</a>
                     </div>
                 </div>
             </article>
