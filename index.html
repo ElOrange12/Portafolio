@@ -226,8 +226,34 @@
         }
 
         .card-actions { display: flex; gap: 15px; }
-        .link-text { font-weight: bold; font-size: 0.9rem; border-bottom: 1px solid transparent; }
-        .link-text:hover { color: var(--accent); border-bottom-color: var(--accent); }
+        
+        /* --- Enlace "Más Información" --- */
+        .link-text {
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            display: inline-flex; /* Necesario para alinear la flecha */
+            align-items: center;  /* Centra verticalmente la flecha */
+            gap: 5px;             /* Espacio entre el texto y la flecha */
+        }
+        
+        .link-text:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* --- FLECHA AUTOMÁTICA (NUEVO) --- */
+        /* Esto añade una flecha "→" después de cada enlace .link-text */
+        .link-text::after {
+            content: '\2192'; /* Código Unicode para la flecha derecha */
+            font-size: 1.1rem;
+            transition: transform 0.3s ease; /* Animación suave */
+        }
+
+        /* Animación al pasar el ratón: la flecha se mueve a la derecha */
+        .link-text:hover::after {
+            transform: translateX(5px);
+        }
 
         /* --- FOOTER --- */
         footer {
@@ -332,7 +358,7 @@
                         <span class="badge">JavaScript</span>
                     </div>
                     <div class="card-actions">
-                        <a href="#" class="link-text">Más información</a>
+                        <a href="gymmetrics.html" class="link-text">Más información</a>
                     </div>
                 </div>
             </article>
@@ -350,7 +376,7 @@
                         <span class="badge">JavaScript</span>
                     </div>
                     <div class="card-actions">
-                        <a href="" class="link-text">Mas Información</a>
+                        <a href="adminviews.html" class="link-text">Mas Información</a>
                     </div>
                 </div>
             </article>
@@ -365,7 +391,7 @@
                         <span class="badge">Python</span>
                     </div>
                     <div class="card-actions">
-                        <a href="#" class="link-text">Más Información</a>
+                        <a href="duelodemagos.html" class="link-text">Más Información</a>
                     </div>
                 </div>
             </article>
@@ -380,7 +406,7 @@
                         <span class="badge">Python</span>
                     </div>
                     <div class="card-actions">
-                        <a href="#" class="link-text">Más información</a>
+                        <a href="duelodragones.html" class="link-text">Más información</a>
                     </div>
                 </div>
             </article>
@@ -395,7 +421,7 @@
                         <span class="badge">Python</span>
                     </div>
                     <div class="card-actions">
-                        <a href="#" class="link-text">Más información</a>
+                        <a href="cdm.html" class="link-text">Más información</a>
                     </div>
                 </div>
             </article>

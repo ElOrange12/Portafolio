@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Duelo de Magos - Detalles del Proyecto</title>
+		
+		<link rel="icon" type="image/png" href="img/FavIcon.png">
+		<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+		<style>
+		    /* --- VARIABLES GLOBALES (Mismas que tu Portafolio) --- */
+		    :root {
+		        --bg-color: #121212;
+		        --card-bg: #1E1E1E;
+		        --text-main: #E0E0E0;
+		        --text-muted: #A0A0A0;
+		        --accent: #FF6B00;
+		        --border-color: #333;
+		    }
+
+		    /* --- RESET --- */
+		    * { margin: 0; padding: 0; box-sizing: border-box; }
+		    body {
+		        font-family: 'Segoe UI', system-ui, sans-serif;
+		        background-color: var(--bg-color);
+		        color: var(--text-main);
+		        line-height: 1.6;
+		        padding-top: 80px; /* Espacio para el header fijo */
+		    }
+		    a { text-decoration: none; color: inherit; transition: 0.3s; }
+		    img { max-width: 100%; display: block; }
+		    ul { list-style: none; }
+
+		    /* --- HEADER (Igual que las otras páginas) --- */
+		    header {
+		        position: fixed;
+		        top: 0; left: 0; width: 100%; height: 70px;
+		        background-color: rgba(18, 18, 18, 0.95);
+		        border-bottom: 1px solid var(--border-color);
+		        display: flex; justify-content: space-between; align-items: center;
+		        padding: 0 5%; z-index: 1000; backdrop-filter: blur(10px);
+		    }
+		    .logo { font-size: 1.2rem; font-weight: bold; color: white; }
+		    .logo span { color: var(--accent); }
+		    .btn-back {
+		        font-size: 0.9rem; font-weight: 600; color: var(--text-muted);
+		        display: flex; align-items: center; gap: 8px;
+		    }
+		    .btn-back:hover { color: var(--accent); }
+		    .btn-back::before { content: '\2190'; font-size: 1.2rem; } /* Flecha izquierda */
+
+		    /* --- HERO DEL PROYECTO (Encabezado) --- */
+		    .project-hero {
+		        text-align: center;
+		        padding: 60px 20px;
+		        border-bottom: 1px solid var(--border-color);
+		        background: radial-gradient(circle at center, rgba(255, 107, 0, 0.05) 0%, transparent 70%);
+		    }
+
+		    .project-icon-lg {
+		        width: 120px; height: 120px;
+		        object-fit: contain;
+		        margin: 0 auto 20px;
+		        filter: drop-shadow(0 0 15px rgba(255, 107, 0, 0.4));
+		    }
+
+		    .project-hero h1 { font-size: 3rem; color: white; margin-bottom: 10px; }
+		    .project-hero .subtitle { font-size: 1.2rem; color: var(--accent); font-weight: 500; letter-spacing: 1px; }
+
+		    /* --- LAYOUT PRINCIPAL (Grid) --- */
+		    .container {
+		        max-width: 1100px;
+		        margin: 50px auto;
+		        padding: 0 20px;
+		        display: grid;
+		        grid-template-columns: 2fr 1fr; /* 2 partes contenido, 1 parte sidebar */
+		        gap: 50px;
+		    }
+
+		    /* --- COLUMNA IZQUIERDA (Contenido) --- */
+		    .content-section h2 {
+		        font-size: 1.8rem; color: white; margin-bottom: 20px;
+		        border-left: 4px solid var(--accent); padding-left: 15px;
+		    }
+		    
+		    .content-section p { margin-bottom: 20px; color: #ccc; font-size: 1.05rem; }
+
+		    /* Lista de características */
+		    .features-list { margin-bottom: 40px; }
+		    .features-list li {
+		        margin-bottom: 12px;
+		        padding-left: 25px;
+		        position: relative;
+		        color: #ddd;
+		    }
+		    .features-list li::before {
+		        content: '✔'; color: var(--accent);
+		        position: absolute; left: 0; top: 0; font-weight: bold;
+		    }
+
+		    /* Galería de capturas */
+		    .gallery-grid {
+		        display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;
+		    }
+		    .screenshot {
+		        border-radius: 8px; border: 1px solid var(--border-color);
+		        transition: transform 0.3s; cursor: pointer;
+		    }
+		    .screenshot:hover { transform: scale(1.02); border-color: var(--accent); }
+
+		    /* --- COLUMNA DERECHA (Sidebar Info) --- */
+		    .sidebar-card {
+		        background-color: var(--card-bg);
+		        border: 1px solid var(--border-color);
+		        padding: 30px;
+		        border-radius: 12px;
+		        position: sticky; top: 100px; /* Se queda fijo al hacer scroll */
+		    }
+
+		    .info-group { margin-bottom: 25px; }
+		    .info-group h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 1px; }
+		    
+		    /* Tags de tecnologías */
+		    .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+		    .tag {
+		        background: rgba(255, 107, 0, 0.1); color: var(--accent);
+		        padding: 5px 10px; border-radius: 4px; font-size: 0.85rem; border: 1px solid transparent;
+		    }
+
+		    /* Botones de acción */
+		    .action-btn {
+		        display: flex; justify-content: center; align-items: center; gap: 10px;
+		        width: 100%; padding: 12px; margin-top: 15px;
+		        background-color: var(--accent); color: black; font-weight: bold;
+		        border-radius: 6px; text-transform: uppercase; font-size: 0.9rem;
+		        transition: 0.3s;
+		    }
+		    .action-btn:hover { background-color: white; box-shadow: 0 0 15px rgba(255, 107, 0, 0.4); }
+		    
+		    .action-btn.secondary {
+		        background: transparent; border: 2px solid var(--accent); color: white;
+		    }
+		    .action-btn.secondary:hover { background: var(--accent); color: black; }
+
+		    /* Footer */
+		    footer {
+		        text-align: center; padding: 40px; margin-top: 50px;
+		        border-top: 1px solid var(--border-color); color: #666;
+		    }
+
+		    /* Responsive */
+		    @media (max-width: 768px) {
+		        .container { grid-template-columns: 1fr; } /* Una sola columna en móvil */
+		        .sidebar-card { position: static; margin-bottom: 40px; order: -1; } /* Sidebar arriba en móvil */
+		        .project-hero h1 { font-size: 2.2rem; }
+		    }
+		</style>
+	</head>
+	<body>
+
+		<header>
+		    <div class="logo">Daniel<span>.Dev</span></div>
+		    <a href="index.html" class="btn-back">Volver al Portafolio</a>
+		</header>
+
+		<section class="project-hero">
+		    <img src="img/Logo DueloMagos.png" alt="Logo Mago" class="project-icon-lg">
+		    
+		    <h1>Duelo de Magos</h1>
+		    <p class="subtitle">Simulador de Combate Estratégico en Python</p>
+		</section>
+
+		<div class="container">
+		    
+		    <div class="content-section">
+            
+		        <section id="descripcion">
+		            <h2>Sobre el Proyecto</h2>
+		            <p>
+		                <strong>Duelo de Magos</strong> es un desafío de lógica programada en Python que se aleja de la fuerza bruta para centrarse en la estrategia. 
+		                A diferencia de un combate estándar, este ejercicio plantea un escenario de "puzzle": el jugador controla a un hechicero que debe derribar un <strong>Escudo Mágico</strong> con una cantidad de vida específica.
+		            </p>
+		            <p>
+		                La complejidad del programa radica en sus restricciones: el jugador dispone de un <strong>límite estricto de dos turnos</strong> y una cantidad finita de maná. 
+		                El objetivo es encontrar la combinación exacta de hechizos (cada uno con diferente coste de maná y daño) para reducir la vida del escudo a cero justo antes de que se agote el tiempo. Si te quedas corto de daño o te quedas sin maná antes de tiempo, el escudo se regenera y pierdes.
+		            </p>
+		        </section>
+
+		        <section id="caracteristicas" style="margin-top: 40px;">
+		            <h2>Lógica y Algoritmos</h2>
+		            <ul class="features-list">
+		                <li><strong>Gestión de Recursos:</strong> Implementación de contadores para el Maná y los Turnos, obligando a calcular el coste-beneficio de cada hechizo.</li>
+		                <li><strong>Condiciones de Victoria:</strong> Estructuras de control (`if/elif/else`) complejas que evalúan no solo si el escudo se ha roto, sino si se ha hecho dentro del límite de turnos permitido.</li>
+		                <li><strong>Menú Interactivo:</strong> Uso de bucles para permitir al usuario seleccionar hechizos de una lista predefinida y ver el resultado inmediato en la terminal.</li>
+		                <li><strong>Diseño de Puzzle:</strong> El código está estructurado para que solo exista una (o muy pocas) combinaciones ganadoras, probando la capacidad de análisis lógico del programador.</li>
+		            </ul>
+		        </section>
+
+		        <section id="galeria" style="margin-top: 40px;">
+		            <h2>Galería Visual</h2>
+		            <p>El desafío en la terminal:</p>
+		            <div class="gallery-grid">
+		                <img src="img/captura_mago_menu.png" class="screenshot" alt="Menú de selección de hechizos">
+		                <img src="img/captura_mago_victoria.png" class="screenshot" alt="Resultado del combate">
+		            </div>
+		        </section>
+
+		    </div>
+
+		    <aside>
+		        <div class="sidebar-card">
+		            <div class="info-group">
+		                <h3>Tecnologías</h3>
+		                <div class="tech-tags">
+		                    <span class="tag">Python 3.10</span>
+		                </div>
+		            </div>
+
+		            <div class="info-group">
+		                <h3>Tipo</h3>
+		                <p style="color:white;">Proyecto Personal / Académico</p>
+		            </div>
+
+		            <div class="info-group">
+		                <h3>Estado</h3>
+		                <p style="color: #FF9800; font-weight: bold;">🚧 En Desarrollo (v1.0)</p>
+		            </div>
+
+		            <div class="info-group" style="margin-top: 30px;">
+		                <a href="https://github.com/ElOrange12/Progamacion-DAM-I/blob/main/001-Ejercicios/003-Simulacros/002-Simulacros%20en%20bruto/Sim-Ej006-Duelo%20de%20magos.py" target="_blank" class="action-btn">
+		                    <i class="devicon-github-original"></i> Ver Repositorio
+		                </a>
+		                </div>
+		        </div>
+		    </aside>
+
+		</div>
+
+		<footer>
+		    <p>&copy; 2026 Daniel Oliveira Vidal. Creado con pasión y café.</p>
+		</footer>
+
+	</body>
+</html>
