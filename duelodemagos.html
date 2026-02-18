@@ -155,6 +155,52 @@
 		        .sidebar-card { position: static; margin-bottom: 40px; order: -1; } /* Sidebar arriba en móvil */
 		        .project-hero h1 { font-size: 2.2rem; }
 		    }
+		    .terminal-window {
+		        background-color: #1e1e1e;
+		        border-radius: 8px;
+		        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+		        font-family: 'Consolas', 'Courier New', monospace;
+		        border: 1px solid #333;
+		        overflow: hidden;
+		        max-width: 100%;
+		    }
+		    .terminal-header {
+		        background-color: #2d2d2d;
+		        padding: 10px 15px;
+		        display: flex;
+		        align-items: center;
+		        border-bottom: 1px solid #333;
+		    }
+		    .btn-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+		    .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+		    .title { color: #999; font-size: 0.8rem; margin-left: 10px; }
+
+		    .terminal-body {
+		        height: 400px;
+		        padding: 20px;
+		        color: #e0e0e0;
+		        overflow-y: auto;
+		        font-size: 0.95rem;
+		        white-space: pre-wrap;
+		    }
+		    
+		    /* Colores específicos para este script */
+		    .term-purple { color: #9C27B0; font-weight: bold; } /* Mago */
+		    .term-blue { color: #2196F3; } /* Escudo */
+		    .term-fire { color: #FF5722; } /* Fuego */
+		    .term-lightning { color: #FFEB3B; } /* Rayo */
+		    .term-success { color: #4CAF50; font-weight: bold; }
+		    .term-fail { color: #F44336; }
+
+		    .terminal-input-area {
+		        display: flex; padding: 10px 20px; background-color: #252525; border-top: 1px solid #333;
+		    }
+		    .prompt { color: var(--accent); margin-right: 10px; font-weight: bold; }
+		    #user-input {
+		        flex: 1; background: transparent; border: none; color: white;
+		        font-family: inherit; font-size: 0.95rem; outline: none;
+		    }
+		    
 		</style>
 	</head>
 	<body>
@@ -197,30 +243,227 @@
 		            </ul>
 		        </section>
 
-		        <section id="terminal-demo" style="margin-top: 40px;">
-					<h2>Prueba el Código en Vivo</h2>
-					<p>He integrado una terminal conectada al backend para que puedas jugar ahora mismo:</p>
+		        <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+
+				<section id="terminal-demo" style="margin-top: 40px;">
+					<h2>Prueba el Duelo de Magos (v1.0)</h2>
+					<p>He adaptado el script original para ejecutarlo en vivo. Introduce una edad para ver si tu mago es capaz de romper el escudo:</p>
 					
 					<div class="terminal-window">
 						<div class="terminal-header">
 						    <span class="btn-dot red"></span>
 						    <span class="btn-dot yellow"></span>
 						    <span class="btn-dot green"></span>
-						    <span class="title">python3 duelo_dragones.py</span>
+						    <span class="title">python3 duelo_magos.py</span>
 						</div>
 						<div class="terminal-body" id="terminal-output">
-						    <div class="line">Conectando con el servidor...</div>
-						    </div>
+						    <div class="line">Cargando hechizos...</div>
+						</div>
 						<div class="terminal-input-area">
 						    <span class="prompt">>>></span>
-						    <input type="text" id="user-input" autocomplete="off" placeholder="Escribe aquí..." disabled>
+						    <input type="text" id="user-input" autocomplete="off" placeholder="Esperando carga..." disabled>
 						</div>
 					</div>
 					
-					<button onclick="iniciarTerminal()" class="action-btn" style="margin-top: 20px; max-width: 200px;">
-						🔄 Reiniciar Programa
+					<button onclick="reiniciarTerminal()" class="action-btn" style="margin-top: 20px; max-width: 200px;">
+						🔄 Reiniciar Duelo
 					</button>
 				</section>
+				
+				<script>
+					let pyodide = null;
+					const outputDiv = document.getElementById('terminal-output');
+					const inputField = document.getElementById('user-input');
+
+					// --- CÓDIGO PYTHON REFECTORIZADO PARA WEB ---
+					const pythonCode = `
+			class MagoGame:
+				def __init__(self):
+					self.reset()
+
+				def reset(self):
+					self.step = 0 # 0: Inicio, 1: Resultados, 2: Fin
+				
+				def process(self, texto=""):
+					# PASO 0: Pedir edad
+					if self.step == 0:
+						self.step = 1
+						return "Duelo de magos v1.0\\nIntroduce la edad del mago: "
+					
+					# PASO 1: Calcular todo (Batalla completa)
+					elif self.step == 1:
+						log = f">>> {texto}\\n"
+						
+						# 1. Validación de edad (try/except original)
+						try:
+						    edad_mago = int(texto)
+						except:
+						    edad_mago = 100
+						    log += "(Entrada inválida, se asume edad 100)\\n"
+
+						# 2. Clasificación
+						clasificacion_mago = ''
+						if edad_mago < 30:
+						    clasificacion_mago = 'Aprendiz'
+						elif edad_mago >= 30 and edad_mago < 100:
+						    clasificacion_mago = 'Hechicero'
+						else:
+						    clasificacion_mago = 'Archimago'
+						
+						log += f"El mago es un {clasificacion_mago}\\n"
+
+						# 3. Poder Base (Función original)
+						poder_base = 0
+						if edad_mago < 30:
+						    poder_base = 5
+						elif edad_mago >= 30 and edad_mago < 100:
+						    poder_base = 8
+						else:
+						    poder_base = 10
+						
+						log += f"El mago {clasificacion_mago} tiene un poder base de {poder_base}\\n"
+						log += "-----------------------------------\\n"
+
+						# 4. Rompimiento del hechizo (Bucle for)
+						escudo_magico = 15
+						
+						for i in range(1, 3):
+						    log += f"Turno {i}\\n"
+						    daño = 0
+						    
+						    if i == 1:
+						        log += "El mago ha usado hechizo de fuego\\n"
+						        daño = poder_base // 2
+						    else:
+						        log += "El mago ha usado hechizo de rayo\\n"
+						        daño = poder_base // 3
+						    
+						    # Assertions (Las mantenemos para respetar el código original)
+						    try:
+						        assert isinstance(daño, int) and daño >= 0
+						    except AssertionError:
+						        log += "[ERROR DE CÓDIGO] El daño no es válido.\\n"
+
+						    escudo_magico = escudo_magico - daño
+						    
+						    if escudo_magico < 0:
+						        escudo_magico = 0
+						    
+						    try:
+						        assert escudo_magico >= 0
+						    except AssertionError:
+						        log += "[ERROR] Energía negativa.\\n"
+
+						    log += f"El escudo pierde {daño} puntos de energía\\n"
+						    log += f"Energía restante del escudo: {escudo_magico}\\n\\n"
+						    
+						    if escudo_magico == 0:
+						        break
+						
+						# 5. Resultado Final
+						log += "===== RESULTADO FINAL =====\\n"
+						log += f"Edad del mago: {edad_mago}\\n"
+						log += f"Rango del mago: {clasificacion_mago}\\n"
+						log += f"Poder base: {poder_base}\\n"
+						log += f"Energía final del escudo: {escudo_magico}\\n\\n"
+
+						if escudo_magico == 0:
+						    log += "¡El mago rompe el escudo mágico!"
+						else:
+						    log += "El escudo resiste al duelo relámpago."
+						
+						self.step = 2
+						log += "\\n\\n(Pulsa Reiniciar para probar otra vez)"
+						return log
+
+					elif self.step == 2:
+						return "El duelo ha terminado. Pulsa el botón de reiniciar."
+
+			game = MagoGame()
+			`;
+
+					// --- INICIALIZACIÓN ---
+					async function main() {
+						try {
+						    pyodide = await loadPyodide();
+						    pyodide.runPython(pythonCode);
+						    
+						    outputDiv.innerHTML = "";
+						    printToTerminal("Sistema cargado. Iniciando Duelo...", "term-purple");
+						    
+						    // Ejecutar primer paso (Pedir edad)
+						    let msg = pyodide.runPython("game.process()");
+						    printToTerminal(msg);
+						    
+						    inputField.disabled = false;
+						    inputField.focus();
+						    
+						} catch (err) {
+						    printToTerminal("Error: " + err, "term-fail");
+						}
+					}
+
+					// --- MANEJO DE INPUT ---
+					inputField.addEventListener("keydown", async function(e) {
+						if (e.key === "Enter") {
+						    let txt = inputField.value;
+						    inputField.value = "";
+						    
+						    // Procesar la entrada en Python
+						    try {
+						        // Escapar comillas por seguridad
+						        let cmd = `game.process("${txt.replace(/"/g, '\\"')}")`;
+						        let response = pyodide.runPython(cmd);
+						        printToTerminal(response);
+						        
+						        // Si el juego termina, deshabilitar input
+						        let step = pyodide.runPython("game.step");
+						        if (step === 2) {
+						            inputField.disabled = true;
+						            inputField.placeholder = "Fin del programa";
+						        }
+						        
+						    } catch (err) {
+						        printToTerminal("Error: " + err, "term-fail");
+						    }
+						}
+					});
+
+					function printToTerminal(text, className="") {
+						if (!text) return;
+						
+						// Un pequeño truco para colorear líneas específicas según el contenido
+						// simulando el 'syntax highlighting' de la salida
+						let lines = text.split('\n');
+						lines.forEach(line => {
+						    let div = document.createElement("div");
+						    div.textContent = line;
+						    
+						    if (className) div.classList.add(className);
+						    else if (line.includes("fuego")) div.classList.add("term-fire");
+						    else if (line.includes("rayo")) div.classList.add("term-lightning");
+						    else if (line.includes("rompe el escudo")) div.classList.add("term-success");
+						    else if (line.includes("resiste")) div.classList.add("term-fail");
+						    else if (line.includes("Energía restante")) div.classList.add("term-blue");
+						    c
+						    outputDiv.appendChild(div);
+						});
+						
+						outputDiv.scrollTop = outputDiv.scrollHeight;
+					}
+
+					function reiniciarTerminal() {
+						outputDiv.innerHTML = "";
+						pyodide.runPython("game.reset()");
+						let msg = pyodide.runPython("game.process()");
+						printToTerminal(msg);
+						inputField.disabled = false;
+						inputField.placeholder = "Escribe aquí...";
+						inputField.focus();
+					}
+
+					main();
+				</script>
 
 		    </div>
 
@@ -240,7 +483,7 @@
 
 		            <div class="info-group">
 		                <h3>Estado</h3>
-		                <p style="color: #FF9800; font-weight: bold;">🚧 En Desarrollo (v1.0)</p>
+		                <p style="color: #4CAF50; font-weight: bold;">✔ Completado (v1.0)</p>
 		            </div>
 
 		            <div class="info-group" style="margin-top: 30px;">
