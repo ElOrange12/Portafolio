@@ -155,6 +155,48 @@
 		        .sidebar-card { position: static; margin-bottom: 40px; order: -1; } /* Sidebar arriba en móvil */
 		        .project-hero h1 { font-size: 2.2rem; }
 		    }
+		    .terminal-window {
+		        background-color: #1e1e1e;
+		        border-radius: 8px;
+		        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+		        font-family: 'Consolas', 'Courier New', monospace;
+		        border: 1px solid #333;
+		        overflow: hidden;
+		        max-width: 100%;
+		    }
+		    .terminal-header {
+		        background-color: #2d2d2d;
+		        padding: 10px 15px;
+		        display: flex;
+		        align-items: center;
+		        border-bottom: 1px solid #333;
+		    }
+		    .btn-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+		    .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+		    .title { color: #999; font-size: 0.8rem; margin-left: 10px; }
+
+		    .terminal-body {
+		        height: 400px;
+		        padding: 20px;
+		        color: #e0e0e0;
+		        overflow-y: auto;
+		        font-size: 0.95rem;
+		        white-space: pre-wrap;
+		    }
+		    /* Colores para el texto de la terminal */
+		    .term-green { color: #4CAF50; }
+		    .term-blue { color: #2196F3; font-weight: bold; }
+		    .term-red { color: #F44336; }
+		    .term-yellow { color: #FFEB3B; }
+		    
+		    .terminal-input-area {
+		        display: flex; padding: 10px 20px; background-color: #252525; border-top: 1px solid #333;
+		    }
+		    .prompt { color: var(--accent); margin-right: 10px; font-weight: bold; }
+		    #user-input {
+		        flex: 1; background: transparent; border: none; color: white;
+		        font-family: inherit; font-size: 0.95rem; outline: none;
+		    }
 		</style>
 	</head>
 	<body>
@@ -188,24 +230,248 @@
 		            </p>
 		        </section>
 
-		        <section id="caracteristicas" style="margin-top: 40px;">
-		            <h2>Características Principales</h2>
-		            <ul class="features-list">
-		                <li><strong>Validación de Datos:</strong> Uso de bloques <code>try-except</code> para evitar fallos si el usuario introduce texto en lugar de números.</li>
-		                <li><strong>Modularidad con Funciones:</strong> El cálculo de la fuerza inicial (`calculaFuerzaBase`) y del daño (`turnoDeAtaque`) se ha separado en funciones para limpiar el flujo principal.</li>
-		                <li><strong>Lógica de Entrenamiento:</strong> Un bucle iterativo (`for`) modifica las variables de estado antes del combate, premiando a los dragones jóvenes con un crecimiento más rápido.</li>
-		                <li><strong>Sistema de Combate:</strong> Bucle condicional (`while`) que enfrenta a las entidades turno a turno, con condiciones finales para determinar la victoria o el empate técnico.</li>
-		            </ul>
-		        </section>
+		        <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
 
-		        <section id="galeria" style="margin-top: 40px;">
-		            <h2>Galería Visual</h2>
-		            <p>Así se ve el código y la ejecución en terminal:</p>
-		            <div class="gallery-grid">
-		                <img src="https://via.placeholder.com/600x400/333/orange?text=Captura+Batalla" class="screenshot" alt="Batalla">
-		                <img src="https://via.placeholder.com/600x400/333/orange?text=Captura+Codigo" class="screenshot" alt="Código">
-		            </div>
-		        </section>
+				<section id="terminal-demo" style="margin-top: 40px;">
+					<h2>Terminal Interactiva Web</h2>
+					<p>He implementado una instancia de Python (Pyodide) directamente en el navegador. <br>
+					   Puedes ejecutar el programa de los Dragones aquí mismo sin necesidad de servidor:</p>
+					
+					<div class="terminal-window">
+						<div class="terminal-header">
+						    <span class="btn-dot red"></span>
+						    <span class="btn-dot yellow"></span>
+						    <span class="btn-dot green"></span>
+						    <span class="title">python3 duelo_dragones.py (WebAssembly)</span>
+						</div>
+						<div class="terminal-body" id="terminal-output">
+						    <div class="line">Cargando motor de Python... (Por favor espera)</div>
+						</div>
+						<div class="terminal-input-area">
+						    <span class="prompt">>>></span>
+						    <input type="text" id="user-input" autocomplete="off" placeholder="Esperando carga..." disabled>
+						</div>
+					</div>
+					
+					<button onclick="reiniciarJuego()" class="action-btn" style="margin-top: 20px; max-width: 200px;">
+						🔄 Reiniciar Programa
+					</button>
+				</section>
+
+		        <script>
+					let pyodide = null;
+					let pythonState = null; // Para guardar el estado del juego
+					const outputDiv = document.getElementById('terminal-output');
+					const inputField = document.getElementById('user-input');
+
+					// 1. CÓDIGO PYTHON (Adaptado para Web)
+					// Usamos una clase para guardar las variables entre "inputs" del usuario
+					const pythonCode = `
+			import random
+
+			class JuegoDragones:
+				def __init__(self):
+					self.step = 0
+					self.dragones = {'A': {}, 'B': {}}
+					self.temp_data = {} # Para guardar datos mientras preguntamos
+					
+				def procesar(self, texto=""):
+					output = ""
+					
+					# PASO 0: Inicio
+					if self.step == 0:
+						self.step = 1
+						return "Duelos de dragones v1.0\\n-----------------------------------------------------------\\n Dime el nombre del dragón A: "
+						
+					# PASO 1: Nombre A -> Pedir Edad A
+					elif self.step == 1:
+						self.dragones['A']['nombre'] = texto
+						self.step = 2
+						return f"--> Nombre: {texto}\\n Dime la edad del dragón A: "
+						
+					# PASO 2: Edad A -> Clasificar A -> Pedir Nombre B
+					elif self.step == 2:
+						try:
+						    edad = int(texto)
+						except:
+						    edad = 100 # Default
+						
+						self.dragones['A']['edad'] = edad
+						self.clasificar('A')
+						self.step = 3
+						return f"--> Edad: {edad}\\n El dragón A es un {self.dragones['A']['clase']}\\n-----------------------------------------------------------\\n Dime el nombre del dragón B: "
+						
+					# PASO 3: Nombre B -> Pedir Edad B
+					elif self.step == 3:
+						self.dragones['B']['nombre'] = texto
+						self.step = 4
+						return f"--> Nombre: {texto}\\n Dime la edad del dragón B: "
+						
+					# PASO 4: Edad B -> Clasificar B -> Iniciar Entrenamiento
+					elif self.step == 4:
+						try:
+						    edad = int(texto)
+						except:
+						    edad = 100
+						    
+						self.dragones['B']['edad'] = edad
+						self.clasificar('B')
+						
+						res = f"--> Edad: {edad}\\n El dragón B es un {self.dragones['B']['clase']}\\n-----------------------------------------------------------\\n"
+						res += self.entrenamiento()
+						res += "\\nPresiona ENTER para iniciar la batalla..."
+						self.step = 5
+						return res
+						
+					# PASO 5: Batalla
+					elif self.step == 5:
+						return self.batalla()
+
+				def clasificar(self, id):
+					edad = self.dragones[id]['edad']
+					if edad < 50:
+						self.dragones[id]['clase'] = 'Joven'
+						self.dragones[id]['fuerza'] = 3
+					elif edad < 200:
+						self.dragones[id]['clase'] = 'Adulto'
+						self.dragones[id]['fuerza'] = 4
+					else:
+						self.dragones[id]['clase'] = 'Anciano'
+						self.dragones[id]['fuerza'] = 2
+					
+					self.dragones[id]['resistencia'] = 0
+					self.dragones[id]['vida'] = 50
+
+				def entrenamiento(self):
+					log = "\\n[FASE DE ENTRENAMIENTO]\\n"
+					# Simulamos los 3 días de golpe para no hacer el proceso eterno en web
+					for id in ['A', 'B']:
+						clase = self.dragones[id]['clase']
+						bonus = 2 if clase == 'Joven' else 1
+						# Entrenan 3 días
+						self.dragones[id]['fuerza'] += (bonus * 3)
+						self.dragones[id]['resistencia'] += (bonus * 3)
+						
+					d_a = self.dragones['A']
+					d_b = self.dragones['B']
+					
+					log += f"Resultados tras 3 días:\\n"
+					log += f"{d_a['nombre']}: Fuerza {d_a['fuerza']} / Res {d_a['resistencia']}\\n"
+					log += f"{d_b['nombre']}: Fuerza {d_b['fuerza']} / Res {d_b['resistencia']}\\n"
+					return log
+
+				def turno_ataque(self, fuerza, resistencia):
+					danyo = float(fuerza - (resistencia / 2))
+					return max(0, danyo) # No curar si el daño es negativo
+
+				def batalla(self):
+					log = "\\n[INICIO DEL COMBATE]\\n"
+					d_a = self.dragones['A']
+					d_b = self.dragones['B']
+					turno = 1
+					
+					while d_a['vida'] > 0 and d_b['vida'] > 0:
+						log += f"\\n___ Turno {turno} ___\\n"
+						
+						# Ataca A
+						danyo_a = self.turno_ataque(d_a['fuerza'], d_b['resistencia'])
+						d_b['vida'] -= danyo_a
+						log += f"--> {d_a['nombre']} ataca: {danyo_a:.1f} daño.\\n"
+						
+						if d_b['vida'] <= 0: break
+						
+						# Ataca B
+						danyo_b = self.turno_ataque(d_b['fuerza'], d_a['resistencia'])
+						d_a['vida'] -= danyo_b
+						log += f"--> {d_b['nombre']} ataca: {danyo_b:.1f} daño.\\n"
+						
+						turno += 1
+						
+					log += "\\n_______________________\\n"
+					if d_a['vida'] > 0:
+						log += f"¡HA GANADO {d_a['nombre'].upper()}!"
+					elif d_b['vida'] > 0:
+						log += f"¡HA GANADO {d_b['nombre'].upper()}!"
+					else:
+						log += "¡DOBLE K.O.! Ambos han caído."
+						
+					# Reset para jugar otra vez si se quiere
+					self.step = 0 
+					log += "\\n\\n(Escribe algo para reiniciar el juego)"
+					return log
+
+			juego = JuegoDragones()
+			`;
+
+					// 2. INICIALIZACIÓN DE PYODIDE
+					async function main() {
+						try {
+						    pyodide = await loadPyodide();
+						    // Cargamos el código Python en memoria
+						    pyodide.runPython(pythonCode);
+						    
+						    // Iniciamos el juego
+						    outputDiv.innerHTML = "";
+						    printToTerminal("Sistema Python listo. Iniciando programa...", "term-green");
+						    
+						    // Llamamos a juego.procesar() en Python
+						    let respuesta = pyodide.runPython("juego.procesar()");
+						    printToTerminal(respuesta);
+						    
+						    // Habilitar input
+						    inputField.disabled = false;
+						    inputField.placeholder = "Escribe aquí...";
+						    inputField.focus();
+						    
+						} catch (err) {
+						    printToTerminal("Error cargando Python: " + err, "term-red");
+						}
+					}
+
+					// 3. FUNCIÓN PARA PROCESAR EL ENTER
+					inputField.addEventListener("keydown", async function(e) {
+						if (e.key === "Enter") {
+						    let textoUsuario = inputField.value;
+						    inputField.value = ""; // Limpiar
+						    
+						    // 1. Mostrar lo que el usuario escribió
+						    printToTerminal(">>> " + textoUsuario, "term-blue");
+						    
+						    // 2. Enviar a Python
+						    // Escapamos comillas para evitar errores en Python
+						    let comando = `juego.procesar("${textoUsuario.replace(/"/g, '\\"')}")`;
+						    
+						    try {
+						        let respuestaPython = pyodide.runPython(comando);
+						        printToTerminal(respuestaPython);
+						        // Scroll automático hacia abajo
+						        outputDiv.scrollTop = outputDiv.scrollHeight;
+						    } catch (err) {
+						        printToTerminal("Error: " + err, "term-red");
+						    }
+						}
+					});
+
+					// Función auxiliar para imprimir en el DIV
+					function printToTerminal(text, className="") {
+						if (!text) return;
+						let div = document.createElement("div");
+						div.textContent = text;
+						if (className) div.classList.add(className);
+						outputDiv.appendChild(div);
+						outputDiv.scrollTop = outputDiv.scrollHeight;
+					}
+					
+					function reiniciarJuego() {
+						outputDiv.innerHTML = "";
+						pyodide.runPython("juego = JuegoDragones()"); // Reinicia la clase
+						let respuesta = pyodide.runPython("juego.procesar()");
+						printToTerminal(respuesta);
+					}
+
+					// Arrancar al cargar
+					main();
+				</script>
 
 		    </div>
 

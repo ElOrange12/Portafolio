@@ -197,14 +197,30 @@
 		            </ul>
 		        </section>
 
-		        <section id="galeria" style="margin-top: 40px;">
-		            <h2>Galería Visual</h2>
-		            <p>El desafío en la terminal:</p>
-		            <div class="gallery-grid">
-		                <img src="img/captura_mago_menu.png" class="screenshot" alt="Menú de selección de hechizos">
-		                <img src="img/captura_mago_victoria.png" class="screenshot" alt="Resultado del combate">
-		            </div>
-		        </section>
+		        <section id="terminal-demo" style="margin-top: 40px;">
+					<h2>Prueba el Código en Vivo</h2>
+					<p>He integrado una terminal conectada al backend para que puedas jugar ahora mismo:</p>
+					
+					<div class="terminal-window">
+						<div class="terminal-header">
+						    <span class="btn-dot red"></span>
+						    <span class="btn-dot yellow"></span>
+						    <span class="btn-dot green"></span>
+						    <span class="title">python3 duelo_dragones.py</span>
+						</div>
+						<div class="terminal-body" id="terminal-output">
+						    <div class="line">Conectando con el servidor...</div>
+						    </div>
+						<div class="terminal-input-area">
+						    <span class="prompt">>>></span>
+						    <input type="text" id="user-input" autocomplete="off" placeholder="Escribe aquí..." disabled>
+						</div>
+					</div>
+					
+					<button onclick="iniciarTerminal()" class="action-btn" style="margin-top: 20px; max-width: 200px;">
+						🔄 Reiniciar Programa
+					</button>
+				</section>
 
 		    </div>
 
