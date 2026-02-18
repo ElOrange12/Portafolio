@@ -147,12 +147,41 @@
 		        .sidebar-card { position: static; margin-bottom: 40px; order: -1; }
 		        .project-hero h1 { font-size: 2.2rem; }
 		    }
+		    
+		    /* --- ESTILOS PARA LA ESTRUCTURA DE ARCHIVOS (FILE TREE) --- */
+		    .project-structure {
+		        background-color: #0d0d0d; /* Fondo muy oscuro */
+		        border: 1px solid var(--border-color);
+		        border-radius: 8px;
+		        padding: 20px;
+		        font-family: 'Consolas', 'Courier New', monospace; /* Fuente de código */
+		        font-size: 0.95rem;
+		        color: #a0a0a0;
+		        margin-top: 20px;
+		        box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+		    }
+
+		    .tree-item {
+		        display: flex;
+		        align-items: center;
+		        margin-bottom: 6px;
+		    }
+
+		    /* Colores para carpetas y archivos */
+		    .folder { color: var(--accent); font-weight: bold; margin-right: 8px; }
+		    .file { color: #e0e0e0; }
+		    .comment { color: #555; margin-left: 15px; font-style: italic; font-size: 0.85rem; }
+
+		    /* Indentación (Niveles de profundidad) */
+		    .indent-1 { margin-left: 20px; border-left: 1px solid #333; padding-left: 10px; }
+		    .indent-2 { margin-left: 40px; border-left: 1px solid #333; padding-left: 10px; }
+		    .indent-3 { margin-left: 60px; border-left: 1px solid #333; padding-left: 10px; }
 		</style>
 	</head>
 	<body>
 
 		<header>
-		    <div class="logo">Daniel<span>.Dev</span></div>
+		    <div class="logo">Orange<span>.Dev</span></div>
 		    <a href="index.html" class="btn-back">Volver al Portafolio</a>
 		</header>
 
@@ -189,6 +218,101 @@
 		            </ul>
 		        </section>
 
+		        <section id="estructura" style="margin-top: 40px;">
+		            <h2>Estructura de Archivos</h2>
+		            <p>
+		                A continuación se muestra el árbol de directorios completo del proyecto, separado en lógica de administración (backend) y vista pública (frontend):
+		            </p>
+		            
+		            <div class="project-structure" style="font-size: 0.85rem; line-height: 1.4;">
+		                <div class="tree-item">📂 <strong>RAÍZ/</strong></div>
+		                
+		                <div class="tree-item indent-1"><span class="folder">📁 admin/</span></div>
+		                
+		                <div class="tree-item indent-2"><span class="folder">📁 BBDD/</span></div>
+		                <div class="tree-item indent-3">🖼️ AdminViews.png</div>
+		                <div class="tree-item indent-3">🖼️ AdminViews.svg</div>
+		                <div class="tree-item indent-3">📄 Base de datos.sql</div>
+		                <div class="tree-item indent-3">📄 diagrama.svg</div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 controladores/</span></div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 css/</span></div>
+		                <div class="tree-item indent-3">📄 estilo.css</div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 img/</span></div>
+		                <div class="tree-item indent-3">🖼️ adminviews.png</div>
+		                <div class="tree-item indent-3">🖼️ adminviews_favicon.png</div>
+		                <div class="tree-item indent-3">🖼️ flechaderecha.png</div>
+		                <div class="tree-item indent-3">🖼️ iconologout.png</div>
+		                <div class="tree-item indent-3">🖼️ iconopelicula.png</div>
+		                <div class="tree-item indent-3">🖼️ iconoseries.png</div>
+		                <div class="tree-item indent-3">🖼️ iconovuelta.png</div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 inc/</span></div>
+		                <div class="tree-item indent-3">📄 cabecera.php</div>
+		                <div class="tree-item indent-3">📄 conexion.php</div>
+		                <div class="tree-item indent-3">📄 db.php</div>
+		                <div class="tree-item indent-3">📄 piedepagina.php</div>
+		                <div class="tree-item indent-3">📄 sidebar.php</div>
+
+		                <div class="tree-item indent-2">📄 index.php</div>
+		                <div class="tree-item indent-2">📄 peliculas.php</div>
+		                <div class="tree-item indent-2">📄 series.php</div>
+		                <div class="tree-item indent-2">📄 usuarios.php</div>
+
+		                <div class="tree-item indent-1"><span class="folder">📁 front/</span></div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 controladores/</span></div>
+		                <div class="tree-item indent-3">📄 guardar_contenido.php</div>
+		                <div class="tree-item indent-3">📄 login_procesa.php</div>
+		                <div class="tree-item indent-3">📄 registro_procesa.php</div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 css/</span></div>
+		                <div class="tree-item indent-3">📄 estilo.css</div>
+
+		                <div class="tree-item indent-2">📄 exito.php</div>
+		                <div class="tree-item indent-2">📄 formulario_pelicula.php</div>
+		                <div class="tree-item indent-2">📄 formulario_serie.php</div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 img/</span></div>
+		                <div class="tree-item indent-3">🖼️ adminviews.png</div>
+		                <div class="tree-item indent-3">🖼️ adminviews_favicon.png</div>
+		                <div class="tree-item indent-3">🖼️ flechaderecha.png</div>
+		                <div class="tree-item indent-3">🖼️ iconologout.png</div>
+		                <div class="tree-item indent-3">🖼️ iconopelicula.png</div>
+		                <div class="tree-item indent-3">🖼️ iconoseries.png</div>
+		                <div class="tree-item indent-3">🖼️ iconovuelta.png</div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 inc/</span></div>
+		                <div class="tree-item indent-3">📄 cabecera.php</div>
+		                <div class="tree-item indent-3">📄 db.php</div>
+		                <div class="tree-item indent-3">📄 piedepagina.php</div>
+
+		                <div class="tree-item indent-2">📄 index.php</div>
+		                <div class="tree-item indent-2">📄 intruso.php</div>
+		                <div class="tree-item indent-2">📄 peliculas.php</div>
+		                <div class="tree-item indent-2">📄 series.php</div>
+
+		                <div class="tree-item indent-2"><span class="folder">📁 style/</span></div>
+		                <div class="tree-item indent-3">📄 style.css</div>
+
+		                <div class="tree-item indent-1">📄 informe.md</div>
+
+		                <div class="tree-item indent-1"><span class="folder">📁 screenshots/</span></div>
+		                <div class="tree-item indent-2">🖼️ adminindex.png</div>
+		                <div class="tree-item indent-2">🖼️ contenidocontenido.png</div>
+		                <div class="tree-item indent-2">🖼️ contenidousuarios.png</div>
+		                <div class="tree-item indent-2">🖼️ inicio.png</div>
+		                <div class="tree-item indent-2">🖼️ login.png</div>
+		                <div class="tree-item indent-2">🖼️ peliculas.png</div>
+		                <div class="tree-item indent-2">🖼️ registro.png</div>
+		                <div class="tree-item indent-2">🖼️ series.png</div>
+		                <div class="tree-item indent-2">🖼️ tablacontenido.png</div>
+		                <div class="tree-item indent-2">🖼️ tablausuarios.png</div>
+		            </div>
+		        </section>
+		        
 		        <section id="galeria" style="margin-top: 40px;">
 		            <h2>Galería Visual</h2>
 		            <p>Interfaz de la aplicación:</p>
@@ -214,8 +338,14 @@
 
 		            <div class="info-group">
 		                <h3>Equipo</h3>
-		                <p style="color:white; margin-bottom:5px;">Daniel Oliveira</p>
-		                <p style="color:white;">Valentín D.G.</p>
+		                <a href="https://github.com/ElOrange12" target="_blank" style="color: #A0A0A0; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 5px;">
+                        <i class="devicon-github-original" style="font-size: 1rem;"></i> 
+                        Daniel Oliveira Vidal
+		                </a>
+		                <a href="https://github.com/Valentindg2506" target="_blank" style="color: #A0A0A0; text-decoration: none; transition: 0.3s; display: flex; align-items: center; gap: 5px;">
+                        <i class="devicon-github-original" style="font-size: 1rem;"></i> 
+                        Valentín de Gennaro
+		                </a>
 		            </div>
 
 		            <div class="info-group">
